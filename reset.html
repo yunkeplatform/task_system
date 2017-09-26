@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>忘记密码</title>
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <link rel="stylesheet" href="js/lib/frozenui/dist/css/frozen.css">
+    <link rel="stylesheet" href="css/app.css">
+    <style>
+        header.bar{
+            background-color: #fff ;
+        }
+        .row{
+            padding: 15px 30px;
+            text-align: center;
+        }
+        .top-row{
+            padding-left: 2.0rem;
+            padding-right: 2.0rem;
+        }
+        .content-block{
+            padding-top: 3rem;
+        }
+        .ui-form-item{
+            height:auto;
+        }
+        .ui-form-item input{
+            background-color: #e0e0e0;
+            color: #999;
+            border-radius: 1.5rem;
+            padding-left: 1.5rem;
+            line-height: 2.2rem;
+        }
+        .ui-form-item input:focus{
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+        }
+        .submit{
+            border-radius: 1.5rem;
+            background-image: none;
+            background-color: #00a5e0;
+        }
+        .submit:before{
+            border: none;
+        }
+        .register-link{
+            color: #333;
+        }
+        .captcha-row .ui-form-item{
+            margin-left: 0;
+        }
+        .captcha-row .ui-form-item:first-child{
+            float: left;
+        }
+        .captcha-row .ui-form-item:last-child{
+            float: right;
+        }
+        .ui-form-item .input-captcha{
+            height:2.2rem;
+        }
+        .ui-form-item .get-captcha{
+            height:2.2rem;
+            padding-left: 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body ng-app="myApp" ng-controller="home_Ctrl">
+<div class="page page-current">
+    <header class="bar bar-nav">
+        <h1 class="title">重置密码</h1>
+    </header>
+    <!-- 这里是页面内容区 -->
+    <div class="content">
+        <div class="row top-row">
+            <a class="pull-right register-link" href="register.html">登录</a>
+            <a class="pull-left register-link" href="register.html">注册</a>
+        </div>
+        <div class="content-block ui-form">
+            <form action="/register.java">
+                <div class="row">
+                    <div class="ui-form-item ui-form-item-pure">
+                        <input type="text" name="phone" placeholder="手机号">
+                    </div>
+                </div>
+                <div class="row captcha-row">
+                    <div class="col-50 ui-form-item">
+                        <input class="input-captcha" type="text" name="captcha" placeholder="验证码">
+                    </div>
+                    <div class="col-50 ui-form-item">
+                        <input class="get-captcha" type="button" name="geCaptcha" value="验证码">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="ui-form-item ui-form-item-pure">
+                        <input type="password" name="password" placeholder="输入新密码">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="ui-form-item ui-form-item-pure">
+                        <input type="password" name="password1" placeholder="再次确认密码">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="ui-btn-wrap">
+                        <button class="submit ui-btn-lg ui-btn-primary">提交</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="js/lib/requirejs/require.min.js" data-main="js/reset" defer async="true" charset="utf-8"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>截图提交</title>
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <link rel="stylesheet" href="js/lib/frozenui/dist/css/frozen.css">
+    <link rel="stylesheet" href="css/app.css">
+    <style>
+        .row{
+            padding: 15px 30px;
+            text-align: center;
+        }
+        .content-block{
+            padding-top: 3rem;
+        }
+    </style>
+</head>
+<body ng-app="myApp">
+<div class="page detail" ng-controller="home_Ctrl">
+    <header class="bar bar-nav">
+        <button class="nav-back button button-link button-nav pull-left">
+            <a href="index.html"><img src="images/common/arrow-left.png" alt="返回"></a>
+        </button>
+        <h1 class="title">提交成功</h1>
+        <!--<h1 class="title">提交失败</h1>-->
+    </header>
+    <!-- 这里是页面内容区 -->
+    <div class="content">
+        <div class="content-block">
+            <div class="row">
+                <img src="http://placeholder.qiniudn.com/150x150" alt="">
+            </div>
+            <div class="row">
+                <p>截图提交成功，请耐心等待审核。</p>
+                <p>服务器开小差了，请重新提交。</p>
+            </div>
+            <div class="row">
+                <div class="col-50">
+                    <p><a href="index.html" class="button button-big button-round">继续领取任务</a></p>
+                </div>
+                <div class="col-50">
+                    <p><a href="task.html" class="button button-big button-round">查看已领取任务 </a></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-50">
+                    <p><a href="submit-image.html?task_id=" class="button button-big button-round">重新提交截图</a></p>
+                </div>
+                <div class="col-50">
+                    <p><a href="task.html" class="button button-big button-round">领取新的任务</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/lib/requirejs/require.min.js" data-main="js/submit-img" defer async="true" charset="utf-8"></script>
+</body>
+</html>

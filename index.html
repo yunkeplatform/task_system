@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>首页 | 云客平台</title>
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <link rel="stylesheet" href="js/lib/frozenui/dist/css/frozen.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+<body ng-app="myApp">
+<div class="page">
+    <header class="bar bar-nav">
+        <!--<a class="icon icon-me pull-left open-panel"></a>-->
+        <h1 class="title">云客平台</h1>
+    </header>
+    <!-- 工具栏 -->
+    <nav class="bar bar-tab">
+        <a class="tab-item external active" href="index.html">
+            <img class="chosen-img" src="images/common/chosen-active.png" alt="精选">
+            <!--<span class="tab-label">精选</span>-->
+        </a>
+        <a class="tab-item external tab-task" data-href="task.html">
+            <!--<span class="icon icon-menu"></span>-->
+            <!--<span class="tab-label">任务</span>-->
+            <img class="chosen-img" src="images/common/task.png" alt="任务">
+        </a>
+        <a class="tab-item external tab-me" data-href="me.html">
+            <img class="chosen-img" src="images/common/me.png" alt="我的">
+            <!--<span class="icon icon-me"></span>-->
+            <!--<span class="tab-label">我的</span>-->
+        </a>
+    </nav>
+    <!-- 这里是页面内容区 -->
+    <div class="content" ng-controller="home_Ctrl">
+        <!--标签部分-->
+        <div class="buttons-tab fixed-tab">
+            <a href="#easy" class="tab-link active button">低难度</a>
+            <a href="#normal" class="tab-link button">中难度</a>
+            <a href="#hard" class="tab-link button">高难度</a>
+        </div>
+        <div class="content-block pull-to-refresh-content" data-ptr-distance="55"  >
+            <!-- 默认的下拉刷新层 -->
+            <div class="pull-to-refresh-layer hide">
+                <div class="preloader"></div>
+                <div class="pull-to-refresh-arrow"></div>
+            </div>
+            <div class="tabs">
+                <div id="easy" class="tab infinite-scroll active">
+                    <!--低难度-->
+                    <div class="content-block">
+                        <ul class="task-list ui-list list-container" ng-repeat="task in tasks">
+                            <li class="task-item" data-href="task.html?id={{ task.id}}">
+                                <div class="ui-list-thumb">
+                                    <a data-href="task-detail.html?id={{task.id}}">
+                                        <span style="background-image:url(http://placeholder.qiniudn.com/80x80)"></span>
+                                    </a>
+                                </div>
+                                <div class="ui-list-info">
+                                    <ul class="ui-justify-flex ui-whitespace">
+                                        <li class="list-info-title">
+                                            <a data-href="task-detail.html?id={{task.id}}" ng-bind="task.title" style="display: block"></a>
+                                            <button class="ui-btn invest">投资</button>
+                                            <button class="ui-btn register">注册</button>
+                                            <!--<button class="ui-btn register-award" ng-show="task.status == 'finish'">注册有奖</button>-->
+                                        </li>
+                                        <li class="list-info-title right-btn">
+                                            <button class="ui-btn">做任务 +3.00元</button>
+                                        </li>
+                                    </ul>
+                                    <div class="task-item-description  ui-nowrap-multi ui-whitespace" ng-bind="task.desc"></div>
+                                </div>
+                                <div class="status-block ui-flex ui-flex-align-center ui-flex-pack-center" ng-show="task.status == 'finish'">
+                                    <div>来晚了<br>任务满额</div>
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- 加载提示符 -->
+                        <div ng-show="maxCount >4" class="infinite-scroll-preloader">
+                            <div class="preloader"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="normal" class="tab  infinite-scroll">
+                    <!--中难度-->
+                    <div class="content-block">
+                       <p>中难度的任务</p>
+                    </div>
+                    <!-- 加载提示符 -->
+                    <div ng-show="maxCount >4" class="infinite-scroll-preloader">
+                        <div class="preloader"></div>
+                    </div>
+                </div>
+                <div id="hard" class="tab infinite-scroll">
+                    <!--高难度-->
+                    <div class="content-block">
+                        <p>高难度的任务</p>
+                    </div>
+                    <!-- 加载提示符 -->
+                    <div ng-show="maxCount >4" class="infinite-scroll-preloader">
+                        <div class="preloader"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui-loading-block show">
+            <div class="ui-loading-cnt">
+                <i class="ui-loading-bright"></i>
+                <p>正在加载中...</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/lib/requirejs/require.min.js" data-main="js/home" defer async="true" charset="utf-8"></script>
+</body>
+</html>

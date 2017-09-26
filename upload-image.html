@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>上传图片</title>
+    <link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">
+    <!--<link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">-->
+    <link rel="stylesheet" href="css/app.css">
+    <style>
+        .content{
+            margin-top: 2.2rem;
+            padding-top: 1rem;
+        }
+        .bar-nav {
+            top: 0;
+        }
+        .bar {
+            position: absolute;
+            right: 0;
+            left: 0;
+            z-index: 10;
+            height: 2.2rem;
+            padding-right: .5rem;
+            padding-left: .5rem;
+            background-color: #f7f7f8;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+        .bar .button-nav.pull-left {
+            margin-left: -.25rem;
+        }
+        .bar .button.pull-left {
+            margin-right: .5rem;
+        }
+        .bar .button {
+            position: relative;
+            top: .35rem;
+            z-index: 20;
+            margin-top: 0;
+            font-weight: 400;
+        }
+        .bar .button-link {
+            top: 0;
+            padding: 0;
+            font-size: .8rem;
+            line-height: 2.2rem;
+            height: 2.2rem;
+            color: #3d4145;;
+            border: 0;
+        }
+        .button {
+            border: 1px solid #0894ec;
+            color: #0894ec;
+            text-decoration: none;
+            text-align: center;
+            display: block;
+            border-radius: .25rem;
+            line-height: 1.25rem;
+            box-sizing: border-box;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            -ms-appearance: none;
+            appearance: none;
+            background: 0 0;
+            padding: 0 .5rem;
+            margin: 0;
+            height: 1.35rem;
+            white-space: nowrap;
+            position: relative;
+            text-overflow: ellipsis;
+            font-size: .7rem;
+            font-family: inherit;
+            cursor: pointer;
+        }
+        .bar-nav .nav-back a{
+            color: #3d4145;;
+        }
+        .pull-left {
+            float: left;
+        }
+        .title {
+            position: absolute;
+            display: block;
+            width: 100%;
+            padding: 0;
+            margin: 0 -.5rem;
+            font-size: .85rem;
+            font-weight: 500;
+            line-height: 2.2rem;
+            color: #3d4145;
+            text-align: center;
+            white-space: nowrap;
+        }
+        .weui-uploader__file{
+            position: relative;
+            width: 145px;
+            height:260px;
+        }
+        .weui-uploader__file .weui-icon-cancel{
+            font-size: 4rem;
+        }
+        .weui-uploader__input-box{
+            width: 98%;
+            height:100px;
+        }
+        .weui-uploader__files {
+            list-style: none;
+            clear: both;
+            overflow: hidden;
+        }
+        .weui-cell_vcode{
+            padding-right: 15px;
+        }
+        .weui-cell_vcode .weui-label{
+            min-width: 150px;
+        }
+        .weui-cell_vcode .weui-input{
+            line-height: 1.2rem;
+            height: 1.2rem;
+            border: 1px solid #eee;
+            padding-left: 10px;
+        }
+        .weui-uploader__file:last-child{
+            margin-right: 0;
+        }
+        .submit{
+            margin-top: 1rem;
+            margin-left: 0;
+            margin-right: 0;
+        }
+    </style>
+    <script src="js/app/upload-image.js"></script>
+</head>
+<body>
+<div class="page"  ng-app="myApp">
+    <header class="bar bar-nav">
+        <button class="nav-back button button-link button-nav pull-left">
+            <a href="index.html"><img src="images/common/arrow-left.png" alt="返回"></a>
+        </button>
+        <h1 class="title">详情</h1>
+    </header>
+    <div class="content" ng-controller="home_Ctrl">
+        <div class="content-block">
+            <div class="weui-cell weui-cell_vcode">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">完成任务的手机号：</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="tel" placeholder="请输入手机号">
+                </div>
+            </div>
+            <div class="weui-cells weui-cells_form">
+                <div class="weui-cell">
+                    <div class="weui-cell__bd">
+                        <form id="uploadForm" action="/">
+                            <div class="weui-uploader">
+                                <div class="weui-uploader__hd">
+                                    <p class="weui-uploader__title">图片上传</p>
+                                    <div class="weui-uploader__info">0/3</div>
+                                </div>
+                                <div class="weui-uploader__bd">
+                                    <ul class="weui-uploader__files">
+                                        <li class="weui-uploader__file" style="background-image:url(http://placeholder.qiniudn.com/150x250)">
+                                            <div class="progress weui-uploader__file-content" style="display: none">50%</div>
+                                            <div class="delete weui-uploader__file-content" style="display: none"><i class="weui-icon-cancel"></i></div>
+                                        </li>
+                                        <li class="weui-uploader__file" style="background-image:url(http://placeholder.qiniudn.com/150x250)">
+                                            <div class="progress weui-uploader__file-content" style="display: none">50%</div>
+                                            <div class="delete weui-uploader__file-content" style="display: none"><i class="weui-icon-cancel"></i></div>
+                                        </li>
+                                        <li class="weui-uploader__file weui-uploader__file_status" style="background-image:url(http://placeholder.qiniudn.com/150x250)">
+                                            <div class="progress weui-uploader__file-content" style="display: none">50%</div>
+                                            <div class="delete weui-uploader__file-content" style="display: none"><i class="weui-icon-cancel"></i></div>
+                                        </li>
+                                    </ul>
+                                    <div class="weui-uploader__input-box">
+                                        <input id="uploaderFiles" class="weui-uploader__input" type="file" accept="image/jpg,image/png,image/gig" multiple="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="submit weui-btn-area">
+                                <button id="fileSubmit" class="weui-btn weui-btn_primary">提交截图</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/lib/jquery/dist/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+<script src="js/lib/requirejs/require.min.js" data-main="js/upload-img" defer async="true" charset="utf-8"></script>
+<script>
+    var params = {
+        fileInput: $("#uploaderFiles").get(0),
+        upButton: $("#fileSubmit").get(0),
+        url: $("#uploadForm").attr("action"),
+        filter: function(files) {
+            var arrFiles = [];
+            for (var i = 0, file; file = files[i]; i++) {
+                if (file.type.indexOf("image") == 0) {
+                    if (file.size >= 1024000) {
+                        alert('您这张"'+ file.name +'"图片大小过大，应小于1M');
+                    } else {
+                        arrFiles.push(file);
+                    }
+                } else {
+                    alert('文件"' + file.name + '"不是图片。');
+                }
+            }
+            return arrFiles;
+        },
+        onSelect: function(files) {
+            console.log('----select---');
+            var i = 0;
+            var funAppendImage = function() {
+                var file = files[i];
+                console.log(file);
+                if (file) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+//                        console.log(e);
+                        var _file = $('.weui-uploader__file').get(i);
+                        $(_file).css("background-image","url("+e.target.result+")");
+                        $(_file).find('.progress').attr('id','uploadProgress_'+i);
+                        $(_file).find('.delete').show().on('click',function () {
+                            console.log('delete-this----'+i);
+                            UploadImage.funDeleteFile(file);
+                            $(_file).css("background-image","url(http://placeholder.qiniudn.com/150x250)");
+                            $(_file).find('.delete').hide();
+                            return false;
+                         });
+                        i++;
+                        $('.weui-uploader__info').html(i+'/3');
+                        funAppendImage();
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    //删除方法
+                    $(".upload_delete").click(function() {
+                        UploadImage.funDeleteFile(files[parseInt($(this).attr("data-index"))]);
+                        return false;
+                    });
+                }
+            };
+            funAppendImage();
+        },
+        onDelete: function(file) {
+            console.log('----delete-index--'+file.index);
+            $('#uploadForm')[0].reset();
+        },
+        onProgress: function(file, loaded, total) {
+            var eleProgress = $("#uploadProgress_" + file.index), percent = (loaded / total * 100).toFixed(2) + '%';
+            eleProgress.show().html(percent);
+        },
+        onSuccess: function(file, response) {
+            $("#uploadInf").append("<p>上传成功，图片地址是：" + response + "</p>");
+        },
+        onFailure: function(file) {
+            $("#uploadInf").append("<p>图片" + file.name + "上传失败！</p>");
+            $("#uploadImage_" + file.index).css("opacity", 0.2);
+        },
+        onComplete: function() {
+            //file控件value置空
+            $('#uploadForm')[0].reset();
+            // 成功提示
+            $("#uploadInf").append("<p>当前图片全部上传完毕，可继续添加上传。</p>");
+        }
+    };
+    UploadImage = $.extend(UploadImage, params);
+    UploadImage.init();
+</script>
+</body>
+</html>

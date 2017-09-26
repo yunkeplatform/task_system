@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>已领任务|云客平台</title>
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <link rel="stylesheet" href="js/lib/frozenui/dist/css/frozen.css">
+    <link rel="stylesheet" href="css/task.css">
+</head>
+<body ng-app="myApp">
+<div class="page">
+    <header class="bar bar-nav">
+        <!--<a class="icon icon-me pull-left open-panel"></a>-->
+        <h1 class="title">已领任务</h1>
+    </header>
+    <!-- 工具栏 -->
+    <nav class="bar bar-tab">
+        <a class="tab-item external" href="index.html">
+            <img class="chosen-img" src="images/common/chosen.png" alt="精选">
+        </a>
+        <a class="tab-item external tab-task active" data-href="task.html">
+            <img class="chosen-img" src="images/common/task-active.png" alt="任务">
+        </a>
+        <a class="tab-item external tab-me" href="me.html">
+            <img class="chosen-img" src="images/common/me.png" alt="我的">
+        </a>
+    </nav>
+    <!-- 这里是页面内容区 -->
+    <div class="content pull-to-refresh-content  infinite-scroll infinite-scroll-bottom" data-ptr-distance="55"  ng-controller="home_Ctrl">
+        <!-- 默认的下拉刷新层 -->
+        <div class="pull-to-refresh-layer">
+            <div class="preloader"></div>
+            <div class="pull-to-refresh-arrow"></div>
+        </div>
+        <div class="content-block">
+            <ul class="task-list ui-list ui-list-one" ng-repeat="task in tasks">
+                <li class="task-item" data-href="task.html?id=1">
+                    <div class="ui-list-thumb">
+                        <a href="task-detail.html?id={{task.id}}">
+                            <span style="background-image:url(http://placeholder.qiniudn.com/80x80)"></span>
+                        </a>
+                    </div>
+                    <div class="ui-list-info"  ng-if="task.status == 'apply'">
+                        <ul class="ui-justify-flex ui-whitespace">
+                            <li class="list-info-title">
+                                <h2>{{ task.title}}</h2>
+                            </li>
+                            <li class="list-info-title right-btn apply">
+                                <button class="ui-btn">上传截图</button>
+                            </li>
+                        </ul>
+                        <div class="task-item-description  ui-nowrap-multi ui-whitespace">
+                            领取任务一小时内完成否则无效
+                        </div>
+                    </div>
+                    <div class="ui-list-info" ng-if="task.status =='checkNo'">
+                        <ul class="ui-justify-flex ui-whitespace">
+                            <li class="list-info-title">
+                                <h2>{{ task.title}}</h2>
+                            </li>
+                            <li class="list-info-title right-btn checkNo">
+                                <button class="ui-btn">审核不通过</button>
+                            </li>
+                        </ul>
+                        <div class="task-item-description  ui-nowrap-multi ui-whitespace">
+                            上传的任务截图不符合要求，未通过审核。
+                        </div>
+                    </div>
+                    <div class="ui-list-info" ng-if="task.status == 'timeOut'">
+                        <ul class="ui-justify-flex ui-whitespace">
+                            <li class="list-info-title">
+                                <h2>{{ task.title}}</h2>
+                            </li>
+                            <li class="list-info-title right-btn timeout">
+                                <button class="ui-btn">任务过期</button>
+                            </li>
+                        </ul>
+                        <div class="task-item-description  ui-nowrap-multi ui-whitespace">
+                            执行任务的时间超过期限，已自动取消
+                        </div>
+                    </div>
+                    <div class="ui-list-info" ng-if="task.status =='checked'">
+                        <ul class="ui-justify-flex ui-whitespace">
+                            <li class="list-info-title">
+                                <h2>{{ task.title}}</h2>
+                            </li>
+                            <li class="list-info-title right-btn checked">
+                                <button class="ui-btn">审核通过</button>
+                            </li>
+                        </ul>
+                        <div class="task-item-description  ui-nowrap-multi ui-whitespace">
+                            任务审核通过，收益将在24小时内处理，请耐心等待
+                        </div>
+                    </div>
+                    <div class="ui-list-info" ng-if="task.status =='finish'">
+                        <ul class="ui-justify-flex ui-whitespace">
+                            <li class="list-info-title">
+                                <h2>{{ task.title}}</h2>
+                            </li>
+                            <li class="list-info-title right-btn finish">
+                                <button class="ui-btn">已结算3元</button>
+                            </li>
+                        </ul>
+                        <div class="task-item-description  ui-nowrap-multi ui-whitespace">
+                            任务单已结算，请查收收款账户
+                        </div>
+                    </div>
+                </li>
+            </ul>
+             <!--加载提示符 -->
+            <div class="infinite-scroll-preloader">
+                <div class="preloader"></div>
+            </div>
+        </div>
+        <div class="ui-loading-block show">
+            <div class="ui-loading-cnt">
+                <i class="ui-loading-bright"></i>
+                <p>正在加载中...</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/lib/requirejs/require.min.js" data-main="js/task" defer async="true" charset="utf-8"></script>
+</body>
+</html>

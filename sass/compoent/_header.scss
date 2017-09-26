@@ -1,0 +1,22 @@
+.bar-nav{
+  h1{
+    color: #1d1d1d;
+  }
+  .nav-back a{
+    display: block;
+    height:2.2rem;
+    width:2.25rem;
+    vertical-align: middle;
+    img{
+      position: absolute;
+      top:0;
+      left:0;
+      width:auto;
+      height:2.2rem;
+    }
+  }
+}
+.bar:after{
+  background-color: #ddd;
+  height:2px;
+}

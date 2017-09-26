@@ -1,0 +1,17 @@
+.ui-footer{
+  height:75px;
+  li.active{
+    color: #00a5e0;
+  }
+}
+.bar-tab{
+  .tab-item.active{
+    color: #0066ff;
+  }
+  .tab-item{
+    color: #929292;
+    img{
+      height:2.5rem;
+    }
+  }
+}

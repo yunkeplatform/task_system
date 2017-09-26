@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>我的|云客平台</title>
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <link rel="stylesheet" href="js/lib/frozenui/dist/css/frozen.css">
+    <link rel="stylesheet" href="css/app.css">
+    <style>
+        .total-money{
+            padding: 0.5rem 1.5rem 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .user-name{
+            padding: 15px;
+            font-size: 0.8rem;
+        }
+        .list-block{
+            margin: 0;
+        }
+        .guess-list{
+            font-size: 16px;
+            height: 1.2rem;
+        }
+        a{
+            color: #1d1d1d;
+        }
+        .content-padded{
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body ng-app="myApp">
+<div class="page-group">
+    <div class="page">
+        <header class="bar bar-nav">
+            <button class="nav-back button button-link button-nav pull-left">
+                <a href="index.html"><img src="images/common/arrow-left.png" alt="返回"></a>
+            </button>
+            <h1 class="title">我的</h1>
+        </header>
+        <!-- 工具栏 -->
+        <nav class="bar bar-tab">
+            <a class="tab-item external" href="index.html">
+                <img class="chosen-img" src="images/common/chosen.png" alt="精选">
+            </a>
+            <a class="tab-item external tab-task" data-href="task.html">
+                <img class="chosen-img" src="images/common/task.png" alt="任务">
+            </a>
+            <a class="tab-item external tab-me active" data-href="me.html">
+                <img class="chosen-img" src="images/common/me-active.png" alt="我的">
+            </a>
+        </nav>
+        <!-- 这里是页面内容区 -->
+        <div class="content pull-to-refresh-content" data-ptr-distance="55"  ng-controller="home_Ctrl">
+            <div class="content-block">
+                <!-- 默认的下拉刷新层 -->
+                <div class="pull-to-refresh-layer">
+                    <div class="preloader"></div>
+                    <div class="pull-to-refresh-arrow"></div>
+                </div>
+                <div class="content-padded">
+                    <h2 class="user-name">用户：182****6800</h2>
+                    <p style="padding: 0 15px">累计收益预估：</p>
+                    <h2 class="total-money">30.00</h2>
+                    <ul class="ui-justify ui-whitespace guess-list">
+                        <li>
+                            <p>今日预估：2.00</p>
+                        </li>
+                        <li>
+                            <p>今日任务数：2</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="list-block" style="margin-top: 0;">
+                    <ul>
+                        <li class="item-content item-link">
+                            <div class="item-media"><i class="icon icon-f7"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title">
+                                    <a href="balance-list.html">已结算任务单</a>
+                                </div>
+                                <!--<div class="item-after">极致超薄型</div>-->
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="blank-block h1"></div>
+                <div class="list-block">
+                    <ul>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div id="contact_me" class="item-title">联系客服</div>
+                            </div>
+                        </li>
+                        <li class="item-content item-link" >
+                            <div class="item-media"><i class="icon icon-f7"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title">
+                                    <a href="about.html">关于任务平台</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div id="contact-dialog" class="ui-dialog">
+                    <div class="ui-dialog-cnt">
+                        <header class="ui-dialog-hd ui-border-b">
+                            <h3>联系客服</h3>
+                            <!--<i class="ui-dialog-close" data-role="button"></i>-->
+                        </header>
+                        <div class="ui-dialog-bd">
+                            <!--<h4>标题标题</h4>-->
+                            <div>你好，有事宜请联系QQ号：1234567，感谢您的使用。</div>
+                        </div>
+                        <div class="ui-dialog-ft">
+                            <button class="close-con-dia" type="button" data-role="button">确定</button>
+                            <button class="close-con-dia" type="button" data-role="button">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/lib/requirejs/require.min.js" data-main="js/me" defer async="true" charset="utf-8"></script>
+</body>
+</html>

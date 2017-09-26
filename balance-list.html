@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>已结算任务|云客平台</title>
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <link rel="stylesheet" href="js/lib/frozenui/dist/css/frozen.css">
+    <link rel="stylesheet" href="css/task.css">
+</head>
+<body ng-app="myApp">
+<div class="page">
+    <header class="bar bar-nav">
+        <button class="nav-back button button-link button-nav pull-left">
+            <a href="me.html"><img src="images/common/arrow-left.png" alt="返回"></a>
+        </button>
+        <h1 class="title">已结算任务</h1>
+    </header>
+    <!-- 这里是页面内容区 -->
+    <div class="content pull-to-refresh-content" data-ptr-distance="55"  ng-controller="home_Ctrl">
+        <!-- 默认的下拉刷新层 -->
+        <div class="pull-to-refresh-layer">
+            <div class="preloader"></div>
+            <div class="pull-to-refresh-arrow"></div>
+        </div>
+        <div class="content-block" style="padding-top: 1.5rem">
+            <ul class="task-list ui-list ui-list-one">
+                <li class="task-item">
+                    <div class="ui-list-thumb">
+                        <span style="background-image:url(http://placeholder.qiniudn.com/100x100)"></span>
+                    </div>
+                    <div class="ui-list-info">
+                        <ul class="ui-justify-flex ui-whitespace">
+                            <li class="list-info-title">
+                                <h2>任务标题</h2>
+                            </li>
+                            <li class="list-info-title right-btn finish">
+                                <button class="ui-btn">已结算3元</button>
+                            </li>
+                        </ul>
+                        <div class="task-item-description  ui-nowrap-multi ui-whitespace">
+                            任务单已结算，请查收收款账户
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <!-- 加载提示符 -->
+            <!--<div class="infinite-scroll-preloader">-->
+            <!--<div class="preloader"></div>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>
+<script src="js/lib/requirejs/require.min.js" data-main="js/balance-list" defer async="true" charset="utf-8"></script>
+</body>
+</html>
