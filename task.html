@@ -36,12 +36,12 @@
         <div class="content-block">
             <ul class="task-list ui-list ui-list-one" ng-repeat="task in tasks">
                 <li class="task-item" data-href="task.html?id=1">
-                    <div class="ui-list-thumb">
+                    <div class="ui-list-thumb" ng-if="task.status != 'off'">
                         <a href="task-detail.html?id={{task.id}}">
                             <span style="background-image:url(http://placeholder.qiniudn.com/80x80)"></span>
                         </a>
                     </div>
-                    <div class="ui-list-info"  ng-if="task.status == 'apply'">
+                    <div class="ui-list-info" ng-if="task.status == 'apply'">
                         <ul class="ui-justify-flex ui-whitespace">
                             <li class="list-info-title">
                                 <h2>{{ task.title}}</h2>

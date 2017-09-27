@@ -6,7 +6,7 @@
     <title>任务详情页|云客平台</title>
     <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
     <link rel="stylesheet" href="js/lib/frozenui/dist/css/frozen.css">
-    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/task_detail.css">
 </head>
 <body ng-app="myApp">
 <div class="page detail" ng-controller="home_Ctrl">
@@ -14,7 +14,8 @@
         <button class="nav-back button button-link button-nav pull-left">
             <a href="index.html"><img src="images/common/arrow-left.png" alt="返回"></a>
         </button>
-        <h1 class="title">详情</h1>
+        <h1 class="title" ng-if="task.status !='off'">任务详情</h1>
+        <h1 class="title" ng-if="task.status =='off'">任务已下架</h1>
     </header>
     <!-- 这里是页面内容区 -->
     <div class="content pull-to-refresh-content" data-ptr-distance="55">
@@ -23,7 +24,7 @@
             <div class="preloader"></div>
             <div class="pull-to-refresh-arrow"></div>
         </div>
-        <div class="content-block">
+        <div class="content-block" ng-if="task.status != 'off'">
             <div class="list-block media-list">
                 <ul class="detail-top-list">
                     <li>
@@ -123,11 +124,27 @@
                 </div>
             </div>
         </div>
+        <div class="content-block task-off" ng-if="task.status == 'off'">
+            <div class="row">
+                <img src="images/common/task_off.png" alt="任务已下架">
+            </div>
+            <div class="row off-text">
+                <p>任务已下架，请重新选择任务。</p>
+            </div>
+            <div class="off-btn row">
+                <div class="col-50">
+                    <a class="btn nav-back back-btn" >返回</a>
+                </div>
+                <div class="col-50">
+                    <a class="btn back-home" href="index.html">领取新的任务</a>
+                </div>
+            </div>
+        </div>
     </div>
-    <nav class="bar bar-tab task-apply">
+    <nav class="bar bar-tab task-apply" ng-if="task.status =='active'">
         <a type="button">申请任务</a>
     </nav>
-    <nav class="bar bar-tab task-applyed" style="display: none">
+    <nav class="bar bar-tab task-applyed" ng-if="task.status == 'apply'">
         <!--任务分网页任务和下载任务-->
         <ul class="ui-justify-flex">
             <li class="list-info-title">
