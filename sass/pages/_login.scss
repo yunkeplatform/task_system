@@ -1,0 +1,72 @@
+.row{
+  padding: 15px 30px;
+  text-align: center;
+}
+.top-row{
+  padding-left: 2.0rem;
+  padding-right: 2.0rem;
+  margin-top: 1rem;
+}
+.site-name{
+  color: #fb1d1d;
+  font-size: 0.85rem;
+}
+.login-form{
+  padding-top: 2rem;
+}
+.ui-form-item{
+  height:auto;
+}
+.ui-form-item input{
+  color: #999;
+  font-size: 18px;
+  border-radius: 1.5rem;
+  padding-left: 1.5rem;
+  line-height: 2.2rem;
+  background-color: #eee;
+}
+.ui-form-item input:focus{
+  background-color: #fff;
+  border: 1px solid #eee;
+}
+.submit{
+  border-radius: 1.5rem;
+  background-image: none;
+  background-color: #0068b7;
+}
+.submit:before{
+  border: none;
+}
+/*
+ register page
+ */
+.register-link,.reset-link{
+  color: #000;
+}
+.captcha-row .ui-form-item{
+  margin-left: 0;
+}
+.captcha-row .ui-form-item:first-child{
+  float: left;
+}
+.captcha-row .ui-form-item:last-child{
+  float: right;
+}
+.ui-form-item .input-captcha{
+  height:2.2rem;
+}
+.ui-form-item .get-captcha{
+  color: #333;
+  height:2.2rem;
+  padding-left: 0;
+  text-align: center;
+}
+.register-form{
+  margin-top: 2rem;
+}
+/*
+ reset password
+ */
+.reset-form{
+  margin-top: 4rem;
+}
