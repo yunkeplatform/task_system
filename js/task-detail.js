@@ -29,9 +29,9 @@ require(['config'], function (){
             require(['sm'],function () {
                 $.init();
                 console.log('========');
-                // $('.nav-back').on('click',function () {
-                //     window.history.back();
-                // });
+                $('.nav-back').on('click',function () {
+                    window.history.back();
+                });
                 $('.task-apply').on('click',function () {
                     // 点击申请任务
                    $('.task-applyed').show();

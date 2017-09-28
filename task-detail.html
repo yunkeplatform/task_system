@@ -40,7 +40,10 @@
                     </li>
                 </ul>
             </div>
-            <h3 class="reward">任务奖励： + 3.00元</h3>
+            <div class="task-origin">
+                <p class="reward">任务来源： ***</p>
+                <p class="reward">任务奖励： + 3.00元</p>
+            </div>
             <ul class="detail-middle-list ui-justify-flex ui-whitespace">
                 <li class="list-info-title">
                     <p>任务难度：低</p>
@@ -52,6 +55,7 @@
                 </li>
             </ul>
             <div class="list-block">
+                <div class="blank-block h1"></div>
                 <div class="detail-desc">
                     <div class="list-title">任务描述</div>
                     <div class="list-content">
@@ -112,6 +116,7 @@
                         </ul>
                     </div>
                 </div>
+                <div class="blank-block h1"></div>
                 <div class="detail-desc">
                     <div class="list-title">任务截图示例</div>
                     <div class="list-content task-picture">
@@ -156,16 +161,24 @@
             </li>
         </ul>
     </nav>
-    <!--<nav class="bar bar-tab task-status">-->
-        <!--<a type="button">任务已过期</a>-->
-        <!--<a type="button">已提交，待审核中</a>-->
-        <!--<a type="button">审核通过，请等待结账</a>-->
-        <!--<a type="button">已结账，请领取新的任务</a>-->
-        <!--<a type="button">审核未通过，如有问题，请联系客服</a>-->
-        <!--&lt;!&ndash;异常情况&ndash;&gt;-->
-        <!--<a type="button">来晚了，任务满额</a>-->
-        <!--<a type="button">任务已下架</a>-->
-    <!--</nav>-->
+    <nav class="bar bar-tab task-status" ng-if="task.status =='checkNo'">
+        <a type="button">审核未通过，如有问题，请联系客服</a>
+    </nav>
+    <nav class="bar bar-tab task-status" ng-if="task.status =='checked'">
+        <a type="button">审核通过，请等待结账</a>
+    </nav>
+    <nav class="bar bar-tab task-status" ng-if="task.status =='timeOut'">
+        <a type="button">任务已过期</a>
+    </nav>
+    <nav class="bar bar-tab task-status" ng-if="task.status =='finish'">
+        <a type="button">已结账，请领取新的任务</a>
+    </nav>
+    <nav class="bar bar-tab task-status" ng-if="task.status =='sellout'">
+        <a type="button">来晚了，任务满额</a>
+    </nav>
+    <nav class="bar bar-tab task-status" ng-if="task.status =='checking'">
+        <a type="button">已提交，待审核中</a>
+    </nav>
 </div>
 <script src="js/lib/requirejs/require.min.js" data-main="js/task-detail" defer async="true" charset="utf-8"></script>
 </body>

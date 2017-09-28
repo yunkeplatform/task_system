@@ -26,3 +26,114 @@
     border-color: #000;
   }
 }
+.task-status{
+  height:2rem;
+  background-color: #c5c5c5;
+  text-align: center;
+  a{
+    color:#000;
+    display: block;
+    line-height: 2rem;
+  }
+}
+// detail page
+.detail {
+  background: #fff;
+  .list-block{
+    margin: 0;
+  }
+  .task-origin{
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+  }
+  .reward{
+    color: #000;
+    font-size: 16px;
+    padding: 0 15px;
+    line-height: 1rem;
+  }
+  .detail-top-list{
+    .item-title-row{
+      position: absolute;
+      top:0.75rem;
+    }
+    .item-subtitle{
+      position: absolute;
+      bottom: 0.75rem;
+    }
+  }
+  .detail-middle-list{
+    padding: 20px 15px;
+    border-top:1px solid #f5f5f5;
+    .list-info-title p{
+      color: #999;
+    }
+  }
+  .detail-desc{
+    overflow: auto;
+    padding-top: 1rem;
+    .list-title{
+      color: #010101;
+      padding: 0 20px;
+      border-left: 8px solid #0066ff;
+    }
+    .list-content{
+      .item-title{
+        white-space: inherit;
+        font-size: 16px;
+      }
+      padding-top: 1rem;
+    }
+  }
+  .notice{
+    color: #fe0101;
+    .notice-title{
+      font-size: 16px;
+    }
+    .item-title{
+      font-size: 14px;
+    }
+  }
+ .list-block .item-inner:after{
+    background-color: #fff;
+  }
+  .task-picture{
+    clear: both;
+    overflow: auto;
+    .media-content{
+      width: 640px;
+      overflow-x: scroll;
+    }
+    .item-media{
+      display: inline-block;
+      float: left;
+      padding-right: 20px;
+    }
+    .item-media:last-child{
+      padding-right: 0;
+    }
+  }
+  .task-apply {
+    height:2rem;
+    a{
+      text-align: center;
+      display: block;
+      width: 100%;
+      background: #00a5e0;
+      line-height: 2rem;
+      color: #fff;
+    }
+  }
+  .task-applyed{
+    background: #fff;
+    height: 2.0rem;
+    li.list-info-title {
+      width: 50%;
+      text-align: center;
+      line-height: 2.0rem;
+    }
+    .li.list-info-title:first-child{
+      border-right: 2px solid #eee;
+    }
+  }
+}
