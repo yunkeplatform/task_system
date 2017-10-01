@@ -6,16 +6,7 @@
     <title>截图提交</title>
     <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
     <link rel="stylesheet" href="js/lib/frozenui/dist/css/frozen.css">
-    <link rel="stylesheet" href="css/app.css">
-    <style>
-        .row{
-            padding: 15px 30px;
-            text-align: center;
-        }
-        .content-block{
-            padding-top: 3rem;
-        }
-    </style>
+    <link rel="stylesheet" href="css/task-submit.css">
 </head>
 <body ng-app="myApp">
 <div class="page detail" ng-controller="home_Ctrl">
@@ -28,28 +19,35 @@
     </header>
     <!-- 这里是页面内容区 -->
     <div class="content">
-        <div class="content-block">
+        <div class="content-block" ng-if="status == 'fail'">
             <div class="row">
-                <img src="http://placeholder.qiniudn.com/150x150" alt="">
+                <img src="images/common/fail.png" alt="">
             </div>
-            <div class="row">
-                <p>截图提交成功，请耐心等待审核。</p>
+            <div class="row result-desc">
                 <p>服务器开小差了，请重新提交。</p>
             </div>
-            <div class="row">
-                <div class="col-50">
-                    <p><a href="index.html" class="button button-big button-round">继续领取任务</a></p>
+            <div class="row result-btn">
+                <div class="col-50 left">
+                    <p><a href="submit-image.html?task_id={{task_id}}" class="button button-big button-round">重新提交截图</a></p>
                 </div>
-                <div class="col-50">
-                    <p><a href="task.html" class="button button-big button-round">查看已领取任务 </a></p>
+                <div class="col-50 right">
+                    <p><a href="task.html" class="button button-big button-round">领取新的任务</a></p>
                 </div>
             </div>
+        </div>
+        <div class="content-block" ng-if="status == 'success'">
             <div class="row">
-                <div class="col-50">
-                    <p><a href="submit-image.html?task_id=" class="button button-big button-round">重新提交截图</a></p>
+                <img src="images/common/success.png" alt="截图提交成功">
+            </div>
+            <div class="row result-desc">
+                <p>截图提交成功，请耐心等待审核。</p>
+            </div>
+            <div class="row result-btn">
+                <div class="col-50 left">
+                    <p><a href="index.html" class="button button-big button-round">继续领取任务</a></p>
                 </div>
-                <div class="col-50">
-                    <p><a href="task.html" class="button button-big button-round">领取新的任务</a></p>
+                <div class="col-50 right">
+                    <p><a href="task.html" class="button button-big button-round">查看已领取任务 </a></p>
                 </div>
             </div>
         </div>

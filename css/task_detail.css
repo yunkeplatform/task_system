@@ -262,7 +262,9 @@ body > a {
       width: 50%;
       text-align: center;
       line-height: 2.0rem; }
-    .detail .task-applyed .li.list-info-title:first-child {
+    .detail .task-applyed li.list-info-title:first-child {
       border-right: 2px solid #eee; }
+      .detail .task-applyed li.list-info-title:first-child a {
+        color: #000; }
 
 /*# sourceMappingURL=task_detail.css.map */

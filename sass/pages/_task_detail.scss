@@ -132,8 +132,11 @@
       text-align: center;
       line-height: 2.0rem;
     }
-    .li.list-info-title:first-child{
+    li.list-info-title:first-child{
       border-right: 2px solid #eee;
+      a{
+        color: #000;
+      }
     }
   }
 }
