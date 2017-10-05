@@ -33,5 +33,15 @@
 ## sass
  未编译过的.scss 格式的样式表
  
+## 拉取线上最新代码到本地
+    git fetch --all
+    git pull origin master
+    
+   > 如果本地提示本地有内容没有commit，那么就说明你本地的代码落后于线上，具体操作
+   * 先 fetch 使用编辑器工具栏实现 " VCS > Git > fetch "
+   * 后merged master to 本地分支 " VCS > GIT Merger changes"
+   * 选择要merger 的线上分支
+   * 然后继续根据提示框操作（注意绿色和红色都需要处理，不要落下任务本地与线上的差异）
+   
 ## 特别注意
  css 目录下的文件是生成的文件，千万不要修改下面的文件，否则会被覆盖掉。
