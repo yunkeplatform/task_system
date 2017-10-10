@@ -28,5 +28,10 @@
     "angular-route": "^1.6.6",
     "angular-sanitize": "^1.6.6",
     "requirejs": "^2.3.5"
+  },
+  "devDependencies": {
+    "bootstrap": "^3.3.7",
+    "flat-ui": "^2.3.0",
+    "jquery-ui": "^1.12.1"
   }
 }
