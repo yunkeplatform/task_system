@@ -1,0 +1,8 @@
+{
+  "admin":{
+    "users_count": 20,
+    "tasks_count": 100,
+    "orders_count": 30,
+    "agent_count": 20
+  }
+}
