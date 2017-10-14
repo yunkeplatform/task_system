@@ -148,13 +148,13 @@ body {
 	font-weight: bold;
 }
 .check-div select {
-	height: 26px;
+	height: 32px;
 	width: 120px!important;
 	display: inline;
 	color: #ccc;
 }
 .check-div input {
-	width: 200px !important;
+	width: 120px !important;
 	display: inline;
 }
 .tab-pane {

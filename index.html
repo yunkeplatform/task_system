@@ -48,8 +48,8 @@
                 <div id="easy" class="tab infinite-scroll active">
                     <!--低难度-->
                     <div class="content-block">
-                        <ul class="task-list ui-list list-container" ng-repeat="task in tasks">
-                            <li class="task-item" data-href="task.html?id={{ task.id}}">
+                        <ul class="task-list ui-list list-container" >
+                            <li class="task-item" ng-repeat="task in tasks" data-href="task.html?id={{ task.id}}">
                                 <div class="ui-list-thumb">
                                     <a data-href="task-detail.html?id={{task.id}}">
                                         <span style="background-image:url(http://placeholder.qiniudn.com/80x80)"></span>

@@ -34,8 +34,8 @@
             <div class="pull-to-refresh-arrow"></div>
         </div>
         <div class="content-block">
-            <ul class="task-list ui-list ui-list-one" ng-repeat="task in tasks">
-                <li class="task-item" data-href="task.html?id=1">
+            <ul class="task-list ui-list ui-list-one">
+                <li class="task-item" ng-repeat="task in tasks" data-href="task.html?id={{task.id}}">
                     <div class="ui-list-thumb" ng-if="task.status != 'off'">
                         <a href="task-detail.html?id={{task.id}}">
                             <span style="background-image:url(http://placeholder.qiniudn.com/80x80)"></span>
