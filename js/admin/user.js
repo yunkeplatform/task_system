@@ -9,6 +9,7 @@ require(['config'], function (){
             // 判断是否登录，且角色是管理员
             $scope.pre_page = 10; //每页显示10条数据
             $scope.current_page = 1; //当前页码
+            // 初始加载页面数据
             $http({
                 method: 'GET',
                 url: '../js/json/users.json'
@@ -19,12 +20,7 @@ require(['config'], function (){
                 $scope.agents = response.data.agents;
                 $scope.user_status = response.data.user_status;
                 RenderPageSelect(response.data.total_page);
-                if($scope.total_page == 1){
-                    $('.pre-page').addClass('disabled');
-                    $('.next-page').addClass('disabled');
-                }else{
-                    $('.pre-page').addClass('disabled');
-                }
+                preNextRender(1);
             }, function errorCallback(response) {
                 // 请求失败执行代码
                 require(['sm'],function () {
@@ -87,6 +83,35 @@ require(['config'], function (){
                     $scope.users = response.data.users;
                     $scope.total_page = 1; // 总页数
                     $scope.current_page = 1;
+                    RenderPageSelect(response.data.total_page);
+                    console.log($scope.current_page);
+                    preNextRender($scope.current_page);
+                }, function errorCallback(response) {
+                    // 请求失败执行代码
+                    require(['sm'],function () {
+                        $.alert('Sorry,加载失败了','请重试或者待会再试');
+                    });
+                });
+            });
+            // 改变某个用户的状态
+            $('.tablebody').on('click','.btn-user-status',function () {
+                var user_id = $(this).attr('data-id');
+                var user_status = $(this).attr('data-status');
+                if(user_status == 'active'){
+                    user_status = 'missing'
+                }else{
+                    user_status = 'active'
+                }
+                var _url = '../js/json/users.json?'+'user_id='+user_id+'&user_status='+user_status;
+                console.log(_url);
+                $http({
+                    method: 'GET',
+                    url:_url
+                }).then(function successCallback(response) {
+                    // 请求成功执行代码
+                    $scope.users = response.data.users;
+                    // $scope.total_page = 1; // 总页数
+                    // $scope.current_page = 1;
                     RenderPageSelect(response.data.total_page);
                     console.log($scope.current_page);
                     preNextRender($scope.current_page);
