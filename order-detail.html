@@ -14,8 +14,7 @@
         <button class="nav-back button button-link button-nav pull-left">
             <a href="index.html"><img src="images/common/arrow-left.png" alt="返回"></a>
         </button>
-        <h1 class="title" ng-if="task.status !='off'">任务详情</h1>
-        <h1 class="title" ng-if="task.status =='off'">任务已下架</h1>
+        <h1 class="title">任务详情</h1>
     </header>
     <!-- 这里是页面内容区 -->
     <div class="content pull-to-refresh-content" data-ptr-distance="55">
@@ -24,7 +23,7 @@
             <div class="preloader"></div>
             <div class="pull-to-refresh-arrow"></div>
         </div>
-        <div class="content-block" ng-if="task.status != 'off'">
+        <div class="content-block">
             <div class="list-block media-list">
                 <ul class="detail-top-list">
                     <li>
@@ -129,30 +128,35 @@
                 </div>
             </div>
         </div>
-        <div class="content-block task-off" ng-if="task.status == 'off'">
-            <div class="row">
-                <img src="images/common/task_off.png" alt="任务已下架">
-            </div>
-            <div class="row off-text">
-                <p>任务已下架，请重新选择任务。</p>
-            </div>
-            <div class="off-btn row">
-                <div class="col-50">
-                    <a class="btn nav-back back-btn" >返回</a>
-                </div>
-                <div class="col-50">
-                    <a class="btn back-home" href="index.html">领取新的任务</a>
-                </div>
-            </div>
-        </div>
     </div>
-    <nav class="bar bar-tab task-apply" ng-if="task.status =='active'">
-        <a type="button">申请任务</a>
+    <nav class="bar bar-tab task-applyed" ng-if="task.status == 'apply'">
+        <!--任务分网页任务和下载任务-->
+        <ul class="ui-justify-flex">
+            <li class="list-info-title">
+                <a href="#">访问网页</a>
+                <!--<a href="#">下载APP</a>-->
+            </li>
+            <li class="list-info-title">
+                <a href="upload-image.html?task_id={{task.id}}">提交截图</a>
+            </li>
+        </ul>
     </nav>
-    <nav class="bar bar-tab task-status" ng-if="task.status =='sellout'">
-        <a type="button">来晚了，任务满额</a>
+    <nav class="bar bar-tab task-status" ng-if="task.status =='checkNo'">
+        <a type="button">审核未通过，如有问题，请联系客服</a>
+    </nav>
+    <nav class="bar bar-tab task-status" ng-if="task.status =='checked'">
+        <a type="button">审核通过，请等待结账</a>
+    </nav>
+    <nav class="bar bar-tab task-status" ng-if="task.status =='timeOut'">
+        <a type="button">任务已过期</a>
+    </nav>
+    <nav class="bar bar-tab task-status" ng-if="task.status =='finish'">
+        <a type="button">已结账，请领取新的任务</a>
+    </nav>
+    <nav class="bar bar-tab task-status" ng-if="task.status =='checking'">
+        <a type="button">已提交，待审核中</a>
     </nav>
 </div>
-<script src="js/lib/requirejs/require.min.js" data-main="js/task-detail" defer async="true" charset="utf-8"></script>
+<script src="js/lib/requirejs/require.min.js" data-main="js/order-detail" defer async="true" charset="utf-8"></script>
 </body>
 </html>

@@ -12,20 +12,20 @@ require(['config'], function (){
         app.controller('home_Ctrl', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
             $scope.preCount = 2;
             $scope.currentCount = 5;
-            if(localStorage.getItem('task_data') && JSON.parse(localStorage.getItem('task_data')).length>1){
-                $scope.tasks = JSON.parse(localStorage.getItem('task_data'));
-                $scope.currentCount = JSON.parse(localStorage.getItem('task_data')).length;
+            if(localStorage.getItem('orders_data') && JSON.parse(localStorage.getItem('orders_data')).length>1){
+                $scope.tasks = JSON.parse(localStorage.getItem('orders_data'));
+                $scope.currentCount = JSON.parse(localStorage.getItem('orders_data')).length;
                 $('.ui-loading-block').hide();
             }else{
                 $http({
                     method: 'GET',
-                    url: './js/json/task.json'
+                    url: './js/json/orders.json'
                 }).then(function successCallback(response) {
                     // 请求成功执行代码
-                    $scope.tasks = response.data.tasks.slice(0,$scope.currentCount);
-                    $scope.maxCount = response.data.tasks.length;
+                    $scope.tasks = response.data.orders.slice(0,$scope.currentCount);
+                    $scope.maxCount = response.data.orders.length;
                     console.log( $scope.maxCount);
-                    localStorage.setItem('task_data',JSON.stringify($scope.tasks));
+                    localStorage.setItem('orders_data',JSON.stringify($scope.tasks));
                     $('.ui-loading-block').hide();
                 }, function errorCallback(response) {
                     // 请求失败执行代码
@@ -50,14 +50,14 @@ require(['config'], function (){
                             loading = false;
                             $http({
                                 method: 'GET',
-                                url: './js/json/task.json'
+                                url: './js/json/orders.json'
                                 // 获取不同类型（easy,n）
                             }).then(function successCallback(response) {
                                 // 请求成功执行代码
-                                $scope.tasks = response.data.tasks.slice(0,$scope.currentCount+$scope.preCount);
+                                $scope.tasks = response.data.orders.slice(0,$scope.currentCount+$scope.preCount);
                                 $scope.currentCount += $scope.preCount;
-                                $scope.maxCount = response.data.tasks.length;
-                                localStorage.setItem('task_data',JSON.stringify($scope.tasks));
+                                $scope.maxCount = response.data.orders.length;
+                                localStorage.setItem('orders_data',JSON.stringify($scope.tasks));
                                 if ($scope.currentCount >= $scope.maxCount) {
                                     $('.infinite-scroll-preloader').hide();
                                 }
@@ -82,10 +82,10 @@ require(['config'], function (){
                     console.log('------------');
                     $http({
                         method: 'GET',
-                        url: './js/json/task.json'
+                        url: './js/json/orders.json'
                     }).then(function successCallback(response) {
                         // 请求成功执行代码
-                        $scope.tasks = response.data.tasks.slice(0,$scope.currentCount);
+                        $scope.tasks = response.data.orders.slice(0,$scope.currentCount);
                         console.info('-----refresh--success');
                     }, function errorCallback(response) {
                         // 请求失败执行代码

@@ -5,49 +5,49 @@
       "title": "任务1",
       "desc": "多行文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略",
       "more_infos": "",
-      "status": "apply"
+      "status": "active"
     },
     {
       "id": 2,
       "title": "任务2",
       "desc": "多行文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略",
       "more_infos": "",
-      "status": "checkNo"
+      "status": "off"
     },
     {
       "id": 3,
       "title": "任务3",
       "desc": "多行文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略",
       "more_infos": "",
-      "status": "timeOut"
+      "status": "active"
     },
     {
       "id": 4,
       "title": "任务4",
       "desc": "多行文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略",
       "more_infos": "",
-      "status": "checked"
+      "status": "sellout"
     },
     {
       "id": 5,
       "title": "任务5",
       "desc": "多行文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略",
       "more_infos": "",
-      "status": "finish"
+      "status": "active"
     },
     {
       "id": 6,
       "title": "任务6",
       "desc": "多行文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略",
       "more_infos": "",
-      "status": "checkNo"
+      "status": "active"
     },
     {
       "id": 7,
       "title": "任务7",
       "desc": "多行文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略",
       "more_infos": "",
-      "status": "checked"
+      "status": "active"
     },
     {
       "id": 8,
@@ -61,14 +61,14 @@
       "title": "任务9",
       "desc": "多行文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略",
       "more_infos": "",
-      "status": "checking"
+      "status": "active"
     },
     {
       "id": 10,
       "title": "任务10",
       "desc": "多行文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略",
       "more_infos": "",
-      "status": "sellout"
+      "status": "off"
     },
     {
       "id": 11,
@@ -78,6 +78,11 @@
       "status": "active"
     }
   ],
-
+  "status":[
+    {
+      "active": "正常的",
+      "off":"任务已下架",
+      "sellout":"卖光"
+  }
   ]
 }

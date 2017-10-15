@@ -19,7 +19,7 @@
       "title": "任务3",
       "desc": "多行文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略",
       "more_infos": "",
-      "status": "timeOut"
+      "status": "timeout"
     },
     {
       "id": 4,
@@ -54,7 +54,7 @@
       "title": "任务8",
       "desc": "多行文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略",
       "more_infos": "",
-      "status": "off"
+      "status": "checking"
     },
     {
       "id": 9,
@@ -68,26 +68,23 @@
       "title": "任务10",
       "desc": "多行文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略",
       "more_infos": "",
-      "status": "sellout"
+      "status": "timeout"
     },
     {
       "id": 11,
       "title": "任务11",
       "desc": "多行文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略，内容文字超出长度省略",
       "more_infos": "",
-      "status": "active"
+      "status": "apply"
     }
   ],
   "status":[{
-    "active": "正常的",
     "apply" :"申请状态",
     "checkNo":"审核不通过",
     "checked":"审核通过",
     "finish":"已结算",
-    "timeOut":"任务超时",
-    "off":"任务已下架",
-    "checking":"待审核",
-    "sellout":"卖光"
+    "timeout":"任务超时",
+    "checking":"待审核"
   }],
   "info":"已领任务，此表要关联task表"
 }

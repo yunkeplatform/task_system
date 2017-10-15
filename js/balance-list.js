@@ -8,10 +8,10 @@ require(['config'], function (){
         app.controller('home_Ctrl', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
             $http({
                 method: 'GET',
-                url: './js/json/data.json'
+                url: './js/json/balance_lists.json'
             }).then(function successCallback(response) {
                 // 请求成功执行代码
-                $scope.tasks = response.data.tasks;
+                $scope.tasks = response.data.orders;
                 $('#loading-block').hide();
             }, function errorCallback(response) {
                 // 请求失败执行代码
@@ -30,10 +30,10 @@ require(['config'], function (){
                     console.log('------------');
                     $http({
                         method: 'GET',
-                        url: './js/json/data.json'
+                        url: './js/json/balance_lists.json?status=finish'
                     }).then(function successCallback(response) {
                         // 请求成功执行代码
-                        $scope.tasks = response.data.tasks;
+                        $scope.tasks = response.data.orders;
                         console.info('-----refresh--success');
                     }, function errorCallback(response) {
                         // 请求失败执行代码

@@ -35,9 +35,9 @@
         </div>
         <div class="content-block">
             <ul class="task-list ui-list ui-list-one">
-                <li class="task-item" ng-repeat="task in tasks" data-href="task.html?id={{task.id}}">
+                <li class="task-item" ng-repeat="task in tasks" data-href="order-detail.html?id={{task.id}}">
                     <div class="ui-list-thumb" ng-if="task.status != 'off'">
-                        <a href="task-detail.html?id={{task.id}}">
+                        <a href="order-detail.html?id={{task.id}}">
                             <span style="background-image:url(http://placeholder.qiniudn.com/80x80)"></span>
                         </a>
                     </div>
@@ -67,7 +67,7 @@
                             上传的任务截图不符合要求，未通过审核。
                         </div>
                     </div>
-                    <div class="ui-list-info" ng-if="task.status == 'timeOut'">
+                    <div class="ui-list-info" ng-if="task.status == 'timeout'">
                         <ul class="ui-justify-flex ui-whitespace">
                             <li class="list-info-title">
                                 <h2>{{ task.title}}</h2>
@@ -94,6 +94,19 @@
                         </div>
                     </div>
                     <div class="ui-list-info" ng-if="task.status =='finish'">
+                        <ul class="ui-justify-flex ui-whitespace">
+                            <li class="list-info-title">
+                                <h2>{{ task.title}}</h2>
+                            </li>
+                            <li class="list-info-title right-btn finish">
+                                <button class="ui-btn">已结算3元</button>
+                            </li>
+                        </ul>
+                        <div class="task-item-description  ui-nowrap-multi ui-whitespace">
+                            任务单已结算，请查收收款账户
+                        </div>
+                    </div>
+                    <div class="ui-list-info" ng-if="task.status =='checking'">
                         <ul class="ui-justify-flex ui-whitespace">
                             <li class="list-info-title">
                                 <h2>{{ task.title}}</h2>

@@ -1,7 +1,7 @@
 /**
  * Author johnnyZhang
  * Site johnnyzhang.cn
- * CreateTime 2017/9/17.
+ * CreateTime 2017/10/15.
  */
 require(['config'], function (){
     require(['app','zepto','app/untils'],function (app,$,untils) {
@@ -16,11 +16,11 @@ require(['config'], function (){
         app.controller('home_Ctrl', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
             $http({
                 method: 'GET',
-                url: './js/json/task.json'
+                url: './js/json/orders.json'
             }).then(function successCallback(response) {
                 // 请求成功执行代码
                 var _id = parseInt(untils.GetUrlParam('id'))-1;
-                $scope.task = response.data.tasks[_id];
+                $scope.task = response.data.orders[_id];
             }, function errorCallback(response) {
                 // 请求失败执行代码
                 require(['sm'],function () {
@@ -35,14 +35,14 @@ require(['config'], function (){
                 });
                 $('.task-apply').on('click',function () {
                     // 点击申请任务
-                   $('.task-applyed').show();
+                    $('.task-applyed').show();
                 });
                 // 下拉刷新
                 $(document).on('refresh', '.pull-to-refresh-content',function(e) {
                     console.log('------------');
                     $http({
                         method: 'GET',
-                        url: './js/task.json'
+                        url: './js/orders.json'
                     }).then(function successCallback(response) {
                         // 请求成功执行代码
                         $scope.tasks = response.data.tasks;

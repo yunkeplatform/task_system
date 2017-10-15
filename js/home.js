@@ -14,7 +14,7 @@ require(['config'], function (){
             }else{
                 $http({
                     method: 'GET',
-                    url: './js/json/data.json'
+                    url: './js/json/task.json'
                 }).then(function successCallback(response) {
                     // 请求成功执行代码
                     $scope.tasks = response.data.tasks.slice(0,$scope.currentCount);
@@ -55,7 +55,7 @@ require(['config'], function (){
                             // type 加载的任务类型
                             $http({
                                 method: 'GET',
-                                url: './js/json/data.json'
+                                url: './js/json/task.json'
                                 // url: './js/data.json？type='+type
                                 // 获取不同类型（easy,n）
                             }).then(function successCallback(response) {
@@ -107,7 +107,7 @@ require(['config'], function (){
                     // type
                     $http({
                         method: 'GET',
-                        url: './js/json/data.json'
+                        url: './js/json/task.json'
                     }).then(function successCallback(response) {
                         // 请求成功执行代码
                         console.log('---refresh ---success');
