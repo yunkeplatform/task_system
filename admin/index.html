@@ -42,18 +42,65 @@
         </nav>
     </header>
     <!-- 左侧菜单栏目块 -->
-    <div class="leftMeun" id="leftMeun">
-        <div id="personInfor">
-            <p id="userName">杨鹏</p>
-            <p><span>yangxp@qq.com</span></p>
-        </div>
-        <!--<div class="meun-title">账号管理</div>-->
-        <div class="meun-item" data-href="users.html"><img src="images/icon_user_grey.png">用户管理</div>
-        <div class="meun-item " data-href="tasks.html"><img src="images/icon_source_grey.png">任务管理</div>
-        <div class="meun-item" data-href="orders.html"><img src="images/icon_source_grey.png">订单管理</div>
-        <div class="meun-item" data-href="agents.html"><img src="images/icon_chara_grey.png">代理商管理</div>
-        <div class="meun-item" data-href="permission.html"><img src="images/icon_rule_grey.png">权限管理</div>
-    </div>
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar" style="height: auto;">
+            <!-- Sidebar user panel -->
+            <ul class="sidebar-menu tree" data-widget="tree">
+                <li class="header">云客平台</li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-users"></i> <span>用户管理</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="active"><a href="users.html"><i class="fa fa-user"></i>用户管理</a></li>
+                        <li><a href="user-settlement.html"><i class="fa fa-credit-card"></i>用户结算</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="task.html">
+                        <i class="fa fa-th"></i> <span>任务管理</span>
+                        <!--<span class="pull-right-container">-->
+                        <!--<small class="label pull-right bg-green">new</small>-->
+                        <!--</span>-->
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-shopping-cart"></i> <span>任务订单管理</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu" style="display: none;">
+                        <li><a href="invoice.html"><i class="fa fa-money"></i> 订单流水</a></li>
+                        <li><a href="profile.html"><i class="fa fa-circle-o"></i> 审核订单</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="agent.html">
+                        <i class="fa fa-group"></i> <span>代理商管理</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-magnet"></i> <span>权限管理</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu" style="display: none;">
+                        <li><a href="invoice.html"><i class="fa fa-user"></i> 角色管理</a></li>
+                        <li><a href="profile.html"><i class="fa fa-circle-o"></i> 系统用户</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <!-- /.sidebar -->
+    </aside>
     <!-- 右侧具体内容栏目 -->
     <div id="rightContent">
         <!-- Tab panes -->

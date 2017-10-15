@@ -7,12 +7,13 @@
     <meta name="keywords" content=" ">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="format-detection" content="telephone=no">
-    <title>云客平台后台管理 | 用户管理</title>
+    <title>云客平台后台 | 用户结算</title>
     <!--<link rel="stylesheet" type="text/css" href="../js/lib/flat-ui/dist/css/flat-ui.min.css" />-->
     <link rel="stylesheet" type="text/css" href="../js/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="../js/lib/AdminLTE-2.4.2/dist/css/AdminLTE.min.css" />
     <link rel="stylesheet" href="../js/lib/AdminLTE-2.4.2/dist/css/skins/_all-skins.min.css">
     <link rel="stylesheet" href="../js/lib/AdminLTE-2.4.2/bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../js/lib/AdminLTE-2.4.2/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
     <link rel="stylesheet" type="text/css" href="css/common.css" />
     <!--[if lt IE 9]>
     <script src="js/html5shiv.min.js"></script>
@@ -68,15 +69,15 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li class="active"><a href="users.html"><i class="fa fa-user"></i>用户管理</a></li>
-                        <li><a href="user-settlement.html"><i class="fa fa-credit-card"></i>用户结算</a></li>
+                        <li><a href="users.html"><i class="fa fa-user"></i>用户管理</a></li>
+                        <li class="active"><a href="user-settlement.html"><i class="fa fa-credit-card"></i>用户结算</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="task.html">
                         <i class="fa fa-th"></i> <span>任务管理</span>
                         <!--<span class="pull-right-container">-->
-                            <!--<small class="label pull-right bg-green">new</small>-->
+                        <!--<small class="label pull-right bg-green">new</small>-->
                         <!--</span>-->
                     </a>
                 </li>
@@ -159,36 +160,63 @@
                         </select>
                     </div>
                 </div>
+                <div class="form-inline col-md-12 clearfix" style="height: 40px;padding: 5px 15px">
+                    <div class="col-md-2" style="line-height: 30px">
+                        <button class="btn-export-orders btn btn-white btn-xs"> 导出待结算订单</button>
+                    </div>
+                    <div class="col-md-2" style="line-height: 30px">
+                        <button class="btn-import-orders btn btn-white btn-xs "> 导入订单结算</button>
+                    </div>
+                    <div class="col-md-1" style="line-height: 30px">订单时间:</div>
+                    <div class="col-md-2 no-padding">
+                        <div class="input-group date" data-provide="datepicker">
+                            <input type="text" name="start-time" class="form-control">
+                            <div class="input-group-addon">
+                                <span class="glyphicon glyphicon-th"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1 no-padding" style="max-width: 30px;text-align: center;line-height: 30px"> --- </div>
+                    <div class="col-md-2 no-padding">
+                        <div class="input-group date" data-provide="datepicker">
+                            <input type="text" name="end-time" class="form-control">
+                            <div class="input-group-addon">
+                                <span class="glyphicon glyphicon-th"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <!--用户列表-->
                 <div class="data-div">
                     <!--列表头-->
-                    <div class="row tableHeader">
+                    <div class="row col-xs-12 tableHeader">
                         <div class="col-xs-1">用户ID</div>
                         <div class="col-xs-1">用户手机号</div>
-                        <div class="col-xs-1">用户QQ号</div>
                         <div class="col-xs-1">状态</div>
                         <div class="col-xs-1">所属商户</div>
                         <div class="col-xs-1">收款姓名</div>
                         <div class="col-xs-1">收款账号</div>
-                        <div class="col-xs-2">创建时间</div>
-                        <div class="col-xs-2">更新时间</div>
-                        <div class="col-xs-1">操作</div>
+                        <div class="col-xs-1">总订单数</div>
+                        <div class="col-xs-1">待结算订单</div>
+                        <div class="col-xs-1">待结算金额</div>
+                        <div class="col-xs-1">已结算订单</div>
+                        <div class="col-xs-1">已结算金额</div>
+                        <div class="col-xs-1"></div>
                     </div>
                     <div class="tablebody">
                         <!--数据列表-->
-                        <div class="row user-list" ng-repeat="user in users">
+                        <div class="row col-xs-12 user-list clearfix" ng-repeat="user in users">
                             <div class="col-xs-1" ng-bind="user.id"></div>
                             <div class="col-xs-1" ng-bind="user.phone_number"></div>
-                            <div class="col-xs-1" ng-bind="user.user_qq"></div>
                             <div class="col-xs-1" ng-bind="user.status"></div>
                             <div class="col-xs-1" ng-bind="user.belong_agent"></div>
                             <div class="col-xs-1" ng-bind="user.beneficiary_name"></div>
-                            <div class="col-xs-1" ng-bind="user.beneficiary_account"></div>
-                            <div class="col-xs-2" ng-bind="user.created_at"></div>
-                            <div class="col-xs-2" ng-bind="user.updated_at"></div>
-                            <div class="col-xs-1">
-                                <button class="btn btn-success btn-xs btn-user-status" data-id="{{ user.id}}" data-status="{{ user.status}}">禁用/启用</button>
-                            </div>
+                            <div class="col-xs-1" ng-bind=""></div>
+                            <div class="col-xs-1" ng-bind=""></div>
+                            <div class="col-xs-1" ng-bind=""></div>
+                            <div class="col-xs-1" ng-bind=""></div>
+                            <div class="col-xs-1" ng-bind=""></div>
+                            <div class="col-xs-1" ng-bind=""></div>
                         </div>
                     </div>
                 </div>

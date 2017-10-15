@@ -4,7 +4,7 @@
  * CreateTime 2017/9/12.
  */
 require(['config'], function (){
-    require(['app','zepto','app/untils'],function (app,$,untils) {
+    require(['app','jquery'],function (app,$) {
         app.controller('home_Ctrl', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
             // 判断是否登录，且角色是管理员
             $http({
@@ -24,6 +24,11 @@ require(['config'], function (){
                     location.href= $(this).data('href');
                 }
             });
+            require(['admin-lte'],function (lte) {
+                $(document).ready(function () {
+                    $('.sidebar-menu').tree()
+                })
+            })
         }])
     });
 });

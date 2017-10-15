@@ -4,7 +4,7 @@
  * CreateTime 2017/10/14.
  */
 require(['config'], function (){
-    require(['app','zepto'],function (app,$) {
+    require(['app','jquery'],function (app,$) {
         app.controller('home_Ctrl', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
             // 判断是否登录，且角色是管理员
             $scope.pre_page = 10; //每页显示10条数据
@@ -178,6 +178,16 @@ require(['config'], function (){
                     $(select).val($scope.current_page);
                 }
             }
+            require(['admin-lte'],function (lte) {
+               $(document).ready(function () {
+                    $('.sidebar-menu').tree()
+                })
+            });
+            require(['boot-datepicker'],function (picker) {
+                $('.datepicker').datepicker({
+                    format: 'yyyy-mm-dd'
+                });
+            })
         }])
     });
 });
