@@ -25,9 +25,11 @@
         </div>
         <div class="content-block" style="padding-top: 1.5rem">
             <ul class="task-list ui-list ui-list-one">
-                <li class="task-item" ng-repeat="task in tasks">
+                <li class="task-item" ng-repeat="task in tasks" data-href="order-detail.html?id={{task.id}}">
                     <div class="ui-list-thumb">
-                        <span style="background-image:url(http://placeholder.qiniudn.com/100x100)"></span>
+                        <a href="order-detail.html?id={{task.id}}">
+                            <span style="background-image:url(http://placeholder.qiniudn.com/100x100)"></span>
+                        </a>
                     </div>
                     <div class="ui-list-info">
                         <ul class="ui-justify-flex ui-whitespace">

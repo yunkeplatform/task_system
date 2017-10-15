@@ -19,6 +19,14 @@ require(['config'], function (){
                     $.alert('Sorry,加载失败了','请重试或者待会再试');
                 });
             });
+            $('.task-item a').on('click',function () {
+                // 此处判断是否登录
+                untils.checkLogin($(this).attr('data-href'));
+            });
+            $('.task-item').on('click',function () {
+                // 此处判断是否登录
+                untils.checkLogin($(this).attr('data-href'));
+            });
             require(['sm'],function () {
                 $.init();
                 console.log('========');

@@ -29,20 +29,23 @@ require(['config'], function (){
                     });
                 });
             }
+            // 对跳转链接添加点击事件
+            $('.task-item a').on('click',function () {
+                // 此处判断是否登录
+                untils.checkLogin($(this).attr('data-href'));
+            });
+            $('.task-item').on('click',function () {
+                // 此处判断是否登录
+                untils.checkLogin($(this).attr('data-href'));
+            });
+            $('.bar-tab .tab-task').on('click',function () {
+                untils.checkLogin('task.html');
+            });
+            $('.bar-tab .tab-me').on('click',function () {
+                untils.checkLogin('me.html');
+            });
             require(['sm'],function () {
                 $.init();
-                // 对跳转链接添加点击事件
-                $('.task-item a').on('click',function () {
-                    // 此处判断是否登录
-                    untils.checkLogin($(this).attr('data-href'));
-                });
-                $('.bar-tab .tab-task').on('click',function () {
-                    untils.checkLogin('task.html');
-                });
-                $('.bar-tab .tab-me').on('click',function () {
-                    untils.checkLogin('me.html');
-                });
-
                 $('.buttons-tab').fixedTab({offset:44});
                 // 无限滚动
                 $(function() {

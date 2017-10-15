@@ -34,6 +34,14 @@ require(['config'], function (){
                     });
                 });
             }
+            $('.task-item a').on('click',function () {
+                // 此处判断是否登录
+                untils.checkLogin($(this).attr('data-href'));
+            });
+            $('.task-item').on('click',function () {
+                // 此处判断是否登录
+                untils.checkLogin($(this).attr('data-href'));
+            });
             require(['sm'],function () {
                 $.init();
                 // 无限滚动

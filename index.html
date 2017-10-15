@@ -49,7 +49,7 @@
                     <!--低难度-->
                     <div class="content-block">
                         <ul class="task-list ui-list list-container" >
-                            <li class="task-item" ng-repeat="task in tasks" data-href="task.html?id={{ task.id}}">
+                            <li class="task-item" ng-repeat="task in tasks" data-href="task-detail.html?id={{ task.id}}">
                                 <div class="ui-list-thumb">
                                     <a data-href="task-detail.html?id={{task.id}}">
                                         <span style="background-image:url(http://placeholder.qiniudn.com/80x80)"></span>
@@ -68,7 +68,7 @@
                                     </ul>
                                     <div class="task-item-description  ui-nowrap-multi ui-whitespace" ng-bind="task.desc"></div>
                                 </div>
-                                <div class="status-block ui-flex ui-flex-align-center ui-flex-pack-center" ng-show="task.status == 'finish'">
+                                <div class="status-block ui-flex ui-flex-align-center ui-flex-pack-center" ng-show="task.status == 'sellout'">
                                     <div>来晚了<br>任务满额</div>
                                 </div>
                             </li>
