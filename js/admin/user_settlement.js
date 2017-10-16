@@ -1,7 +1,7 @@
 /**
  * Author johnnyZhang
  * Site johnnyzhang.cn
- * CreateTime 2017/10/14.
+ * CreateTime 2017/10/16.
  */
 require(['config'], function (){
     require(['app','jquery'],function (app,$) {
@@ -34,7 +34,7 @@ require(['config'], function (){
             });
             // 上一页
             $('.pre-page').on('click',function () {
-               var _page = $scope.current_page;
+                var _page = $scope.current_page;
                 console.log('currentPage:----'+$(this).val());
                 $scope.current_page = _page-1;
                 getCurrentPageData($scope.current_page);
@@ -69,10 +69,21 @@ require(['config'], function (){
                 console.log(_status);
                 getCurrentPageData(1);
             });
+            // 监控订单时间的变化
+            $('#start-time').on('change',function () {
+               $scope.start_time = $(this).val();
+                getCurrentPageData(1);
+               console.log('start_time:'+$scope.start_time);
+            });
+            $('#end-time').on('change',function () {
+                $scope.end_time = $(this).val();
+                getCurrentPageData(1);
+                console.log('end_time'+$scope.end_time);
+            });
             // 点击查询
             $('.btn-search').on('click',function () {
-               var user_id = $.trim($('#user_id').val());
-               var user_phone = $.trim($('#user_phone').val());
+                var user_id = $.trim($('#user_id').val());
+                var user_phone = $.trim($('#user_phone').val());
                 var _url = '../js/json/users.json?'+'user_id='+user_id+'&user_phone='+user_phone;
                 console.log(_url);
                 $http({
@@ -147,9 +158,17 @@ require(['config'], function (){
             function getCurrentPageData(page) {
                 var _params = {
                     "agent":null,
-                    "status":null
+                    "status":null,
+                    "start_time":null,
+                    "end_time":null
                 };
                 var _url = '../js/json/users.json';
+                if($scope.start_time && $scope.start_time !=undefined){
+                    _params.start_time = $scope.start_time
+                }
+                if($scope.end_time && $scope.end_time !=undefined){
+                    _params.end_time = $scope.end_time
+                }
                 if($scope.agent && $scope.agent !=undefined){
                     _params.agent = $scope.agent
                 }
@@ -191,11 +210,16 @@ require(['config'], function (){
             }
             $(document).ready(function () {
                 require(['admin-lte'],function (lte) {
-
-                    $('.sidebar-menu').tree()
-
+                    $(document).ready(function () {
+                        $('.sidebar-menu').tree()
+                    })
                 });
-            })
+                require(['boot-datepicker'],function (picker) {
+                    $('.datepicker').datepicker({
+                        format: 'yyyy-mm-dd'
+                    });
+                })
+            });
         }])
     });
 });
