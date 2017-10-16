@@ -27,112 +27,6 @@ require(['config'], function (){
                     $.alert('Sorry,加载失败了','请重试或者待会再试');
                 });
             });
-            $('.meun-item').click(function(){
-                if($(this).data('href')){
-                    location.href= $(this).data('href');
-                }
-            });
-            // 上一页
-            $('.pre-page').on('click',function () {
-                var _page = $scope.current_page;
-                console.log('currentPage:----'+$(this).val());
-                $scope.current_page = _page-1;
-                getCurrentPageData($scope.current_page);
-            });
-            // 下一页
-            $('.next-page').on('click',function () {
-                var _page = $scope.current_page;
-                if(_page<$scope.total_page){
-                    console.log('currentPage:----'+$(this).val());
-                    $scope.current_page = _page+1;
-                    getCurrentPageData($scope.current_page);
-                }
-            });
-            // 监控分页select的变化
-            $('#pagination-select').on('change',function () {
-                var _page = $(this).val();
-                console.log('currentPage:----'+_page);
-                $scope.current_page = _page;
-                getCurrentPageData(_page);
-            });
-            // 监控所属商户select
-            $('#agent').on('change',function () {
-                var _agent = $(this).val();
-                $scope.agent = _agent;
-                console.log(_agent);
-                getCurrentPageData(1);
-            });
-            // 监控用户状态select
-            $('#status').on('change',function () {
-                var _status = $(this).val();
-                $scope.status = _status;
-                console.log(_status);
-                getCurrentPageData(1);
-            });
-            // 监控订单时间的变化
-            $('#start-time').on('change',function () {
-               $scope.start_time = $(this).val();
-                getCurrentPageData(1);
-               console.log('start_time:'+$scope.start_time);
-            });
-            $('#end-time').on('change',function () {
-                $scope.end_time = $(this).val();
-                getCurrentPageData(1);
-                console.log('end_time'+$scope.end_time);
-            });
-            // 点击查询
-            $('.btn-search').on('click',function () {
-                var user_id = $.trim($('#user_id').val());
-                var user_phone = $.trim($('#user_phone').val());
-                var _url = '../js/json/users.json?'+'user_id='+user_id+'&user_phone='+user_phone;
-                console.log(_url);
-                $http({
-                    method: 'GET',
-                    url:_url
-                }).then(function successCallback(response) {
-                    // 请求成功执行代码
-                    $scope.users = response.data.users;
-                    $scope.total_page = 1; // 总页数
-                    $scope.current_page = 1;
-                    RenderPageSelect(response.data.total_page);
-                    console.log($scope.current_page);
-                    preNextRender($scope.current_page);
-                }, function errorCallback(response) {
-                    // 请求失败执行代码
-                    require(['sm'],function () {
-                        $.alert('Sorry,加载失败了','请重试或者待会再试');
-                    });
-                });
-            });
-            // 改变某个用户的状态
-            $('.tablebody').on('click','.btn-user-status',function () {
-                var user_id = $(this).attr('data-id');
-                var user_status = $(this).attr('data-status');
-                if(user_status == 'active'){
-                    user_status = 'missing'
-                }else{
-                    user_status = 'active'
-                }
-                var _url = '../js/json/users.json?'+'user_id='+user_id+'&user_status='+user_status;
-                console.log(_url);
-                $http({
-                    method: 'GET',
-                    url:_url
-                }).then(function successCallback(response) {
-                    // 请求成功执行代码
-                    $scope.users = response.data.users;
-                    // $scope.total_page = 1; // 总页数
-                    // $scope.current_page = 1;
-                    RenderPageSelect(response.data.total_page);
-                    console.log($scope.current_page);
-                    preNextRender($scope.current_page);
-                }, function errorCallback(response) {
-                    // 请求失败执行代码
-                    require(['sm'],function () {
-                        $.alert('Sorry,加载失败了','请重试或者待会再试');
-                    });
-                });
-            });
             // 判断上一页和下一页是否可点击
             function preNextRender(_page) {
                 if(_page > 1){
@@ -218,7 +112,113 @@ require(['config'], function (){
                     $('.datepicker').datepicker({
                         format: 'yyyy-mm-dd'
                     });
-                })
+                });
+                $('.meun-item').click(function(){
+                    if($(this).data('href')){
+                        location.href= $(this).data('href');
+                    }
+                });
+                // 上一页
+                $('.pre-page').on('click',function () {
+                    var _page = $scope.current_page;
+                    console.log('currentPage:----'+$(this).val());
+                    $scope.current_page = _page-1;
+                    getCurrentPageData($scope.current_page);
+                });
+                // 下一页
+                $('.next-page').on('click',function () {
+                    var _page = $scope.current_page;
+                    if(_page<$scope.total_page){
+                        console.log('currentPage:----'+$(this).val());
+                        $scope.current_page = _page+1;
+                        getCurrentPageData($scope.current_page);
+                    }
+                });
+                // 监控分页select的变化
+                $('#pagination-select').on('change',function () {
+                    var _page = $(this).val();
+                    console.log('currentPage:----'+_page);
+                    $scope.current_page = _page;
+                    getCurrentPageData(_page);
+                });
+                // 监控所属商户select
+                $('#agent').on('change',function () {
+                    var _agent = $(this).val();
+                    $scope.agent = _agent;
+                    console.log(_agent);
+                    getCurrentPageData(1);
+                });
+                // 监控用户状态select
+                $('#status').on('change',function () {
+                    var _status = $(this).val();
+                    $scope.status = _status;
+                    console.log(_status);
+                    getCurrentPageData(1);
+                });
+                // 监控订单时间的变化
+                $('#start-time').on('change',function () {
+                    $scope.start_time = $(this).val();
+                    getCurrentPageData(1);
+                    console.log('start_time:'+$scope.start_time);
+                });
+                $('#end-time').on('change',function () {
+                    $scope.end_time = $(this).val();
+                    getCurrentPageData(1);
+                    console.log('end_time'+$scope.end_time);
+                });
+                // 点击查询
+                $('.btn-search').on('click',function () {
+                    var user_id = $.trim($('#user_id').val());
+                    var user_phone = $.trim($('#user_phone').val());
+                    var _url = '../js/json/users.json?'+'user_id='+user_id+'&user_phone='+user_phone;
+                    console.log(_url);
+                    $http({
+                        method: 'GET',
+                        url:_url
+                    }).then(function successCallback(response) {
+                        // 请求成功执行代码
+                        $scope.users = response.data.users;
+                        $scope.total_page = 1; // 总页数
+                        $scope.current_page = 1;
+                        RenderPageSelect(response.data.total_page);
+                        console.log($scope.current_page);
+                        preNextRender($scope.current_page);
+                    }, function errorCallback(response) {
+                        // 请求失败执行代码
+                        require(['sm'],function () {
+                            $.alert('Sorry,加载失败了','请重试或者待会再试');
+                        });
+                    });
+                });
+                // 改变某个用户的状态
+                $('.tablebody').on('click','.btn-user-status',function () {
+                    var user_id = $(this).attr('data-id');
+                    var user_status = $(this).attr('data-status');
+                    if(user_status == 'active'){
+                        user_status = 'missing'
+                    }else{
+                        user_status = 'active'
+                    }
+                    var _url = '../js/json/users.json?'+'user_id='+user_id+'&user_status='+user_status;
+                    console.log(_url);
+                    $http({
+                        method: 'GET',
+                        url:_url
+                    }).then(function successCallback(response) {
+                        // 请求成功执行代码
+                        $scope.users = response.data.users;
+                        // $scope.total_page = 1; // 总页数
+                        // $scope.current_page = 1;
+                        RenderPageSelect(response.data.total_page);
+                        console.log($scope.current_page);
+                        preNextRender($scope.current_page);
+                    }, function errorCallback(response) {
+                        // 请求失败执行代码
+                        require(['sm'],function () {
+                            $.alert('Sorry,加载失败了','请重试或者待会再试');
+                        });
+                    });
+                });
             });
         }])
     });
