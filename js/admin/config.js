@@ -16,9 +16,9 @@ define(function () {
             "angular" : ["lib/angular/angular.min"],
             "angular-route" : ["lib/angular-route/angular-route.min"],
             "angular-sanitize" : ["lib/angular-sanitize/angular-sanitize.min"],
-            "admin-lte":["lib/AdminLTE-2.4.2/dist/js/adminlte.min"],
-            "boot-datepicker":["lib/AdminLTE-2.4.2/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min"],
-            "boot-datepicker-zh":["lib/AdminLTE-2.4.2/bower_components/bootstrap-datepicker/dist/locales/bootstrap-datepicker.zh-CN.min"]
+            "admin-lte":["lib/admin-lte/dist/js/adminlte.min"],
+            "boot-datepicker":["lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.min"],
+            "boot-datepicker-zh":["lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.zh-CN.min"]
         },
         // 第三方脚本模块的别名,jquery比libs/jquery-1.11.1.min.js简洁明了；
         shim: {
