@@ -1,0 +1,68 @@
+{
+  "tasks":[
+    {
+      "id":0,
+      "name":"任务一",
+      "type":"download",
+      "difficulty":"easy",
+      "agent_name":"l-0001",
+      "tag": "1",
+      "price":2.0,
+      "status":"active",
+      "total": 100,
+      "open_time":"2017-10-20 18:00:00",
+      "off_time":"2017-11-11 18:00:00",
+      "valid":"60",
+      "check_time":2,
+      "img_limit":3
+    },
+    {
+      "id":1,
+      "name":"任务2",
+      "type":"web",
+      "difficulty":"normal",
+      "agent_name":"l-0002",
+      "tag": "2",
+      "price":2.0,
+      "status":"off",
+      "total": 199,
+      "open_time":"2017-10-20 18:00:00",
+      "off_time":"2017-11-11 18:00:00",
+      "valid":"30",
+      "check_time":2,
+      "img_limit":4
+    }
+  ],
+  "types":[
+    {
+      "name":"download",
+      "val": "下载"
+    },
+    {
+      "name":"web",
+      "val": "网页"
+    }
+  ],
+  "difficulty":{
+    "easy":"低",
+    "normal":"中",
+    "hard":"高"
+  },
+  "status":[
+    {
+      "name":"active",
+      "val": "正常的"
+    },
+    {
+      "name":"off",
+      "val":"任务已下架"
+    },
+    {
+      "name":"sellout",
+      "val":"卖光"
+    }
+  ],
+  "task_total": 20,
+  "total_page": 2,
+  "current_page":1
+}
