@@ -32,6 +32,26 @@ require(['config'], function (){
                 require(['admin-lte'], function (lte) {
                     $('.sidebar-menu').tree()
                 });
+                $(function() {
+                    $(".upload_img").on("change",function(){
+                        var objUrl = getObjectURL(this.files[0]) ; //获取图片的路径，该路径不是图片在本地的路径
+                        if (objUrl) {
+                            $(this).parent().parent().find('.pic-src').attr('src',objUrl);//将图片路径存入src中，显示出图片
+                        }
+                    });
+                });
+                //建立一個可存取到該file的url
+                function getObjectURL(file) {
+                    var url = null ;
+                    if (window.createObjectURL!=undefined) { // basic
+                        url = window.createObjectURL(file) ;
+                    } else if (window.URL!=undefined) { // mozilla(firefox)
+                        url = window.URL.createObjectURL(file) ;
+                    } else if (window.webkitURL!=undefined) { // webkit or chrome
+                        url = window.webkitURL.createObjectURL(file) ;
+                    }
+                    return url ;
+                }
             });
         }])
     });

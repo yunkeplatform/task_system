@@ -27,6 +27,26 @@
         label{
             line-height: 34px;
         }
+        .row.img{
+            padding-bottom: 15px;
+        }
+        .img>div{
+            height:100px;
+        }
+        .img-src{
+            width:130px;
+        }
+        .upload-img{
+            position: relative;
+        }
+        .upload-img input{
+            position: absolute;
+            bottom: 15px;
+            left:15px;
+        }
+        .pic-src{
+            width: 100px;
+        }
     </style>
 </head>
 <body  ng-app="myApp">
@@ -85,8 +105,8 @@
                         </span>
                     </a>
                     <ul class="treeview-menu" style="display: none;">
-                        <li><a href="invoice.html"><i class="fa fa-money"></i> 订单流水</a></li>
-                        <li><a href="profile.html"><i class="fa fa-circle-o"></i> 审核订单</a></li>
+                        <li><a href="orders.html"><i class="fa fa-money"></i> 订单流水</a></li>
+                        <li><a href="order_check.html"><i class="fa fa-circle-o"></i> 审核订单</a></li>
                     </ul>
                 </li>
                 <li>
@@ -102,8 +122,8 @@
                         </span>
                     </a>
                     <ul class="treeview-menu" style="display: none;">
-                        <li><a href="invoice.html"><i class="fa fa-user"></i> 角色管理</a></li>
-                        <li><a href="profile.html"><i class="fa fa-circle-o"></i> 系统用户</a></li>
+                        <li><a href="user_roles.html"><i class="fa fa-user"></i> 角色管理</a></li>
+                        <li><a href="system_user.html"><i class="fa fa-circle-o"></i> 系统用户</a></li>
                     </ul>
                 </li>
             </ul>
@@ -127,142 +147,193 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">概要</div>
                         <div class="panel-body">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <label for="task-title">任务名称：</label>
+                            <form action="" id="task-form">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label for="task-title">任务名称：</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="text" id="task-title"  name="title" class="form-control" placeholder="任务名称">
+                                    </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <input type="text" id="task-title"  name="title" class="form-control" placeholder="任务名称">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label for="task-subtitle">任务副标题</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="text" id="task-subtitle" name="subtitle" class="form-control">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <label for="task-subtitle">任务副标题</label>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label for="task-agent">代理商</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select id="task-agent" name="agent" class="type-name form-control">
+                                            <!--账号状态-->
+                                            <option value=""></option>
+                                            <option ng-repeat="type in agent" value="{{type.name}}" ng-bind="type.val"></option>
+                                        </select>
+                                    </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <input type="text" id="task-subtitle" name="subtitle" class="form-control">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label for="type">任务分类</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select id="type" name="type" class="type-name form-control">
+                                            <!--账号状态-->
+                                            <option value=""></option>
+                                            <option ng-repeat="type in types" value="{{type.name}}" ng-bind="type.val"></option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <label for="task-agent">代理商</label>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label for="difficulty">任务难度</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select id="difficulty" name="difficulty" class="type-name form-control">
+                                            <!--账号状态-->
+                                            <option value=""></option>
+                                            <option ng-repeat="type in difficulty" value="{{type.name}}" ng-bind="type.val"></option>
+                                        </select>
+                                    </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <select id="task-agent" name="agent" class="type-name form-control">
-                                        <!--账号状态-->
-                                        <option value=""></option>
-                                        <option ng-repeat="type in agent" value="{{type.name}}" ng-bind="type.val"></option>
-                                    </select>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label for="task-tag">任务标签</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="text" id="task-tag" name="tag" class="form-control">
+                                    </div>
+                                    <div class="col-md-3">使用数字代替，如（1，2）</div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <label for="type">任务分类</label>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label for="task-price">任务价格</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="text" id="task-price" name="price" class="form-control">
+                                    </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <select id="type" name="type" class="type-name form-control">
-                                        <!--账号状态-->
-                                        <option value=""></option>
-                                        <option ng-repeat="type in types" value="{{type.name}}" ng-bind="type.val"></option>
-                                    </select>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label for="task-total">库存</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="number" id="task-total" name="total" class="form-control">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <label for="difficulty">任务难度</label>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label for="start-time">开始时间</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input id="start-time" type="text" name="open_time" class="form-control"  value="{{ now}}">
+                                    </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <select id="difficulty" name="difficulty" class="type-name form-control">
-                                        <!--账号状态-->
-                                        <option value=""></option>
-                                        <option ng-repeat="type in difficulty" value="{{type.name}}" ng-bind="type.val"></option>
-                                    </select>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label for="end-time">结束时间</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input id="end-time" type="text" name="off_time" class="form-control" value="{{ now}}">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <label for="task-tag">任务标签</label>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label for="check-time">审核天数</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="text" id="check-time" name="check_time" class="form-control">
+                                    </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <input type="text" id="task-tag" name="tag" class="form-control">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label for="task-valid">有效期时间(分)</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="text" id="task-valid" name="valid" class="form-control">
+                                    </div>
                                 </div>
-                                <div class="col-md-3">使用数字代替，如（1，2）</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <label for="task-price">任务价格</label>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label for="img_limit">图片限制数</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="text" id="img_limit" name="img_limit" class="form-control">
+                                    </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <input type="text" id="task-price" name="price" class="form-control">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label for="status">上下架状态</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select id="status" class="task-status form-control">
+                                            <!--账号状态-->
+                                            <option value=""></option>
+                                            <option ng-repeat="status in task_status" value="{{status.name}}" ng-bind="status.val"></option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <label for="task-total">库存</label>
+                                <!--上传图片部分-->
+                                <div class="row img">
+                                    <div class="col-md-2">
+                                        <label for="uploaderFile1">任务logo</label>
+                                    </div>
+                                    <div class="col-xs-2 img-src">
+                                        <img src="images/img.png" class="pic-src" alt="任务logo">
+                                    </div>
+                                    <div class="col-md-2 upload-img">
+                                        <input id="uploaderFile1" class="upload_img" name="logo" type="file" accept="image/jpg,image/png,image/gig">
+                                    </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <input type="number" id="task-total" name="total" class="form-control">
+                                <div class="row img">
+                                    <div class="col-md-2">
+                                        <label for="uploaderFile2">任务截图1</label>
+                                    </div>
+                                    <div class="col-xs-2 img-src">
+                                        <img src="images/img.png" class="pic-src" alt="任务截图">
+                                    </div>
+                                    <div class="col-md-2 upload-img">
+                                        <input id="uploaderFile2" class="upload_img" name="task_img[]" type="file" accept="image/jpg,image/png,image/gig">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <label for="start-time">开始时间</label>
+                                <div class="row img">
+                                    <div class="col-md-2">
+                                        <label for="uploaderFile3">任务截图2</label>
+                                    </div>
+                                    <div class="col-xs-2 img-src">
+                                        <img src="images/img.png" class="pic-src" alt="任务截图">
+                                    </div>
+                                    <div class="col-md-2 upload-img">
+                                        <input id="uploaderFile3" class="upload_img" name="task_img[]" type="file" accept="image/jpg,image/png,image/gig">
+                                    </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <input id="start-time" type="text" name="open_time" class="form-control"  value="{{ now}}">
+                                <div class="row img">
+                                    <div class="col-md-2">
+                                        <label for="uploaderFile4">任务截图3</label>
+                                    </div>
+                                    <div class="col-xs-2 img-src">
+                                        <img src="images/img.png" class="pic-src" alt="任务截图">
+                                    </div>
+                                    <div class="col-md-2 upload-img">
+                                        <input id="uploaderFile4" class="upload_img" name="task_img[]" type="file" accept="image/jpg,image/png,image/gig">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <label for="end-time">结束时间</label>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label for="">任务说明</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <textarea name="" id="" class="form-control" cols="30" rows="5"></textarea>
+                                    </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <input id="end-time" type="text" name="off_time" class="form-control" value="{{ now}}">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <label for="check-time">审核天数</label>
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="text" id="check-time" name="check_time" class="form-control">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <label for="task-valid">有效期时间(分)</label>
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="text" id="task-valid" name="valid" class="form-control">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <label for="img_limit">图片限制数</label>
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="text" id="img_limit" name="img_limit" class="form-control">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <label for="status">上下架状态</label>
-                                </div>
-                                <div class="col-md-3">
-                                    <select id="status" class="task-status form-control">
-                                        <!--账号状态-->
-                                        <option value=""></option>
-                                        <option ng-repeat="status in task_status" value="{{status.name}}" ng-bind="status.val"></option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <label for="">任务说明</label>
-                                </div>
-                                <div class="col-md-3">
-                                    <textarea name="" id="" class="form-control" cols="30" rows="5"></textarea>
-                                </div>
+                            </form>
+                            <div class="row text-center">
+                                <a type="button" class="btn-submit btn btn-success">确定</a>
+                                <a href="tasks.html" class="btn btn-success">返回</a>
                             </div>
                         </div>
                     </div>
