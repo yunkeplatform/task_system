@@ -135,12 +135,12 @@ body {
 /*右侧具体内容栏目*/
 
 .check-div {
-	height: 70px;
-	line-height: 70px;
-	*line-height: 60px;
+	height: 50px;
+	line-height: 34px;
+	padding-top: 15px;
 	background-color: #fff;
-	padding-left: 30px;
-	min-width: 824px !important;
+	padding-left: 15px;
+	/*min-width: 824px !important;*/
 	box-sizing: border-box;
 }
 .check-div button {
