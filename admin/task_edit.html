@@ -1,11 +1,276 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+<!doctype html>
+<html lang="ch">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content=" ">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>云客平台后台 | 任务编辑</title>
+    <!--<link rel="stylesheet" type="text/css" href="../js/lib/flat-ui/dist/css/flat-ui.min.css" />-->
+    <link rel="stylesheet" type="text/css" href="../js/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../js/lib/admin-lte/dist/css/AdminLTE.min.css" />
+    <link rel="stylesheet" href="../js/lib/admin-lte/dist/css/skins/skin-blue.css">
+    <link rel="stylesheet" href="../js/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .tableHeader>div,.user-list>div {
+            text-align: center;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        label{
+            line-height: 34px;
+        }
+    </style>
 </head>
-<body>
-1111111111
+<body  ng-app="myApp">
+<div id="wrap" class="skin-blue"  ng-controller="home_Ctrl">
+    <header class="main-header">
+        <a href="index.html" class="logo">
+            <span class="logo-lg"><b>云客平台</b></span>
+        </a>
+        <nav class="navbar navbar-static-top">
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown user user-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="hidden-xs">Admin</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="sign-out" href="#" data-toggle="control-sidebar">Sign out</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!--左侧导航-->
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar" style="height: auto;">
+            <!-- Sidebar user panel -->
+            <ul class="sidebar-menu tree" data-widget="tree">
+                <li class="header">云客平台</li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-users"></i> <span>用户管理</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="users.html"><i class="fa fa-user"></i>用户管理</a></li>
+                        <li><a href="user-settlement.html"><i class="fa fa-credit-card"></i>用户结算</a></li>
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="tasks.html" class="active">
+                        <i class="fa fa-th"></i> <span>任务管理</span>
+                        <!--<span class="pull-right-container">-->
+                        <!--<small class="label pull-right bg-green">new</small>-->
+                        <!--</span>-->
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-shopping-cart"></i> <span>任务订单管理</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu" style="display: none;">
+                        <li><a href="invoice.html"><i class="fa fa-money"></i> 订单流水</a></li>
+                        <li><a href="profile.html"><i class="fa fa-circle-o"></i> 审核订单</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="agent.html">
+                        <i class="fa fa-group"></i> <span>代理商管理</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-magnet"></i> <span>权限管理</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu" style="display: none;">
+                        <li><a href="invoice.html"><i class="fa fa-user"></i> 角色管理</a></li>
+                        <li><a href="profile.html"><i class="fa fa-circle-o"></i> 系统用户</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+    <!-- 右侧具体内容栏目 -->
+    <div id="rightContent">
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <!--用户管理模块-->
+            <div role="tabpanel" class="tab-pane active" id="user">
+                <section class="content-header">
+                    <h1>任务管理<small>编辑任务</small></h1>
+                    <ol class="breadcrumb">
+                        <li><a href="index.html"><i class="fa fa-dashboard"></i> 云客平台</a></li>
+                        <li class="active">任务管理</li>
+                    </ol>
+                </section>
+                <section class="content">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">概要</div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label for="task-title">任务名称：</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" id="task-title"  name="title" class="form-control" placeholder="任务名称">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label for="task-subtitle">任务副标题</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" id="task-subtitle" name="subtitle" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label for="task-agent">代理商</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <select id="task-agent" name="agent" class="type-name form-control">
+                                        <!--账号状态-->
+                                        <option value=""></option>
+                                        <option ng-repeat="type in agent" value="{{type.name}}" ng-bind="type.val"></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label for="type">任务分类</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <select id="type" name="type" class="type-name form-control">
+                                        <!--账号状态-->
+                                        <option value=""></option>
+                                        <option ng-repeat="type in types" value="{{type.name}}" ng-bind="type.val"></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label for="difficulty">任务难度</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <select id="difficulty" name="difficulty" class="type-name form-control">
+                                        <!--账号状态-->
+                                        <option value=""></option>
+                                        <option ng-repeat="type in difficulty" value="{{type.name}}" ng-bind="type.val"></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label for="task-tag">任务标签</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" id="task-tag" name="tag" class="form-control">
+                                </div>
+                                <div class="col-md-3">使用数字代替，如（1，2）</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label for="task-price">任务价格</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" id="task-price" name="price" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label for="task-total">库存</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="number" id="task-total" name="total" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label for="start-time">开始时间</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="start-time" type="text" name="open_time" class="form-control"  value="{{ now}}">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label for="end-time">结束时间</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="end-time" type="text" name="off_time" class="form-control" value="{{ now}}">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label for="check-time">审核天数</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" id="check-time" name="check_time" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label for="task-valid">有效期时间(分)</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" id="task-valid" name="valid" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label for="img_limit">图片限制数</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" id="img_limit" name="img_limit" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label for="status">上下架状态</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <select id="status" class="task-status form-control">
+                                        <!--账号状态-->
+                                        <option value=""></option>
+                                        <option ng-repeat="status in task_status" value="{{status.name}}" ng-bind="status.val"></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label for="">任务说明</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <textarea name="" id="" class="form-control" cols="30" rows="5"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/lib/requirejs/require.min.js" data-main="../js/admin/task_edit" defer async="true" charset="utf-8"></script>
 </body>
 </html>

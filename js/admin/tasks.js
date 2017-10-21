@@ -172,5 +172,5 @@ require(['config'], function (){
                 })
             })
         }])
-    });
+});
 });

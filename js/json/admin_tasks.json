@@ -43,11 +43,20 @@
       "val": "网页"
     }
   ],
-  "difficulty":{
-    "easy":"低",
-    "normal":"中",
-    "hard":"高"
-  },
+  "difficulty":[
+    {
+      "name":"easy",
+      "val": "低"
+    },
+    {
+      "name":"normal",
+      "val": "中"
+    },
+    {
+      "name":"hard",
+      "val": "高"
+    }
+  ],
   "status":[
     {
       "name":"active",
@@ -60,6 +69,16 @@
     {
       "name":"sellout",
       "val":"卖光"
+    }
+  ],
+  "agent":[
+    {
+      "name": "l-001",
+      "val" : "代理商A"
+    },
+    {
+      "name": "l-002",
+      "val" : "代理商B"
     }
   ],
   "task_total": 20,
