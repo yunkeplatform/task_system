@@ -17,6 +17,7 @@ define(function () {
             "angular-route" : ["lib/angular-route/angular-route.min"],
             "angular-sanitize" : ["lib/angular-sanitize/angular-sanitize.min"],
             "admin-lte":["lib/admin-lte/dist/js/adminlte.min"],
+            "bootstrap":['lib/bootstrap/dist/js/bootstrap.min'],
             "boot-datepicker":["lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.min"],
             "boot-datepicker-zh":["lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.zh-CN.min"]
         },
@@ -33,6 +34,9 @@ define(function () {
             },
             'admin-lte': {
                 deps: ['jquery']
+            },
+            'bootstrap': {
+              deps: ['jquery']
             },
             'boot-datepicker':{
               deps:['jquery']

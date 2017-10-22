@@ -349,3 +349,8 @@ select {
 .right {
 	float: right;
 }
+
+/* reset bootstrap */
+.modal-dialog{
+	margin-top: 10%;
+}
