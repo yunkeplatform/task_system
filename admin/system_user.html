@@ -1,11 +1,295 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+<!doctype html>
+<html lang="ch">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content=" ">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>云客平台后台管理 | 系统用户</title>
+    <!--<link rel="stylesheet" type="text/css" href="../js/lib/flat-ui/dist/css/flat-ui.min.css" />-->
+    <link rel="stylesheet" type="text/css" href="../js/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../js/lib/admin-lte/dist/css/AdminLTE.min.css" />
+    <link rel="stylesheet" href="../js/lib/admin-lte/dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="../js/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../js/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .tableHeader>div,.user-list>div {
+            text-align: center;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .next-page,.pre-page{
+            cursor: pointer;
+        }
+        .next-page.disabled,.pre-page.disabled{
+            cursor: not-allowed;
+        }
+        .check-div{
+            padding-bottom: 15px;
+            height:65px;
+        }
+        .row{
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        label{
+            line-height: 34px;
+        }
+    </style>
 </head>
-<body>
-
+<body  ng-app="myApp">
+<div id="wrap" class="skin-blue"  ng-controller="home_Ctrl">
+    <header class="main-header">
+        <a href="index.html" class="logo">
+            <span class="logo-lg"><b>云客平台</b></span>
+        </a>
+        <nav class="navbar navbar-static-top">
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown user user-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="hidden-xs">Admin</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="sign-out" href="#" data-toggle="control-sidebar">Sign out</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!--左侧导航-->
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar" style="height: auto;">
+            <!-- Sidebar user panel -->
+            <ul class="sidebar-menu tree" data-widget="tree">
+                <li class="header">云客平台</li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-users"></i> <span>用户管理</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="users.html"><i class="fa fa-user"></i>用户管理</a></li>
+                        <li><a href="user-settlement.html"><i class="fa fa-credit-card"></i>用户结算</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="tasks.html">
+                        <i class="fa fa-th"></i> <span>任务管理</span>
+                        <!--<span class="pull-right-container">-->
+                        <!--<small class="label pull-right bg-green">new</small>-->
+                        <!--</span>-->
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-shopping-cart"></i> <span>任务订单管理</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="orders.html"><i class="fa fa-money"></i> 订单流水</a></li>
+                        <li><a href="order_check.html"><i class="fa fa-circle-o"></i> 审核订单</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="agent.html">
+                        <i class="fa fa-group"></i> <span>代理商管理</span>
+                    </a>
+                </li>
+                <li class="treeview active menu-open">
+                    <a href="#">
+                        <i class="fa fa-magnet"></i> <span>权限管理</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="user_roles.html"><i class="fa fa-user"></i> 角色管理</a></li>
+                        <li class="active"><a href="system_user.html"><i class="fa fa-circle-o"></i> 系统用户</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+    <!-- 右侧具体内容栏目 -->
+    <div id="rightContent">
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <!--用户管理模块-->
+            <div role="tabpanel" class="tab-pane active" id="user">
+                <section class="content-header">
+                    <h1>权限管理<small>系统用户</small></h1>
+                    <ol class="breadcrumb">
+                        <li><a href="index.html"><i class="fa fa-dashboard"></i> 云客平台</a></li>
+                        <li>权限管理</li>
+                        <li class="active">系统用户</li>
+                    </ol>
+                </section>
+                <div class="check-div form-inline">
+                    <a type="button" class="btn btn-success btn-add">新增</a>
+                </div>
+                <div class="data-div clearfix">
+                    <!--列表头-->
+                    <div class="row col-xs-12 tableHeader">
+                        <div class="col-md-1">账号列表</div>
+                        <div class="col-md-1">所属角色</div>
+                        <div class="col-md-2">编辑/删除</div>
+                    </div>
+                    <div class="tablebody clearfix">
+                        <!--数据列表-->
+                        <div class="row col-xs-12 user-list clearfix">
+                            <div class="col-md-1">石头</div>
+                            <div class="col-md-1">商品组</div>
+                            <div class="col-md-2">
+                                <a type="button" class="btn btn-success btn-edit">编辑</a>
+                                <a type="button" class="btn btn-success btn-delete">删除</a>
+                            </div>
+                        </div>
+                        <div class="row col-xs-12 user-list clearfix">
+                            <div class="col-md-1">三十</div>
+                            <div class="col-md-1">物料组</div>
+                            <div class="col-md-2">
+                                <a type="button" class="btn btn-success btn-edit">编辑</a>
+                                <a type="button" class="btn btn-success btn-delete">删除</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--页码块-->
+                <footer class="footer">
+                    <ul class="pagination">
+                        <li>
+                            <select id="pagination-select">
+                            </select>
+                            页
+                        </li>
+                        <li class="gray">共{{total_page}}页</li>
+                        <li><i class="pre-page glyphicon glyphicon-menu-left"></i></li>
+                        <li><i class="next-page glyphicon glyphicon-menu-right"></i></li>
+                    </ul>
+                </footer>
+            </div>
+        </div>
+    </div>
+</div>
+<!--新增modal-->
+<div class="modal fade" tabindex="-1" role="dialog" id="add-user">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="gridSystemModalLabel">新增</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-2">
+                        <label for="add_role_name">用户名</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" id="add_role_name" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <label for="add_user_login">登录账号</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" id="add_user_login" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <label for="add_user_password">登录密码</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="password" id="add_user_password" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <label for="add_user_role">角色分配</label>
+                    </div>
+                    <div class="col-md-4">
+                        <select name="" id="add_user_role" class="form-control">
+                            <option value="active">角色1</option>
+                            <option value="disable">角色2</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="text-align: center">
+                <button type="button" class="btn  btn-success add-save">确认</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!--编辑modal-->
+<div class="modal fade" tabindex="-1" role="dialog" id="edit-user">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">编辑</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-2">
+                        <label for="add_role_name">用户名</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" id="add_role_name" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <label for="edit_user_login">登录账号</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" id="edit_user_login" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <label for="edit_user_password">登录密码</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="password" id="edit_user_password" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <label for="edit_user_role">角色分配</label>
+                    </div>
+                    <div class="col-md-4">
+                        <select name="" id="edit_user_role" class="form-control">
+                            <option value="active">角色1</option>
+                            <option value="disable">角色2</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="text-align: center">
+                <button type="button" class="btn  btn-success edit-save">确认</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<script src="../js/lib/requirejs/require.min.js" data-main="../js/admin/system_user" defer async="true" charset="utf-8"></script>
 </body>
 </html>
