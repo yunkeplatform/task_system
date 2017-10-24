@@ -129,30 +129,27 @@
                 </section>
                 <!--筛选部分-->
                 <div class="check-div form-inline">
-                    <div class="col-lg-6 col-xs-7 no-padding">
-                        <div class="col-md-5 no-padding">
+                    <div class="col-lg-5 col-xs-7 no-padding">
+                        <div class="col-md-6 no-padding">
                             <div class="col-md-4">
                                 <label for="user_id">用户ID</label>
                             </div>
                             <div class="col-md-8">
-                                <input type="text" id="user_id" class="form-control input-sm" placeholder="输入用户的id">
+                                <input type="text" id="user_id" class="form-control input-sm" ng-model="user_id" placeholder="输入用户的id">
                             </div>
                         </div>
-                        <div class="col-md-5 no-padding">
+                        <div class="col-md-6 no-padding">
                             <div class="col-md-4 no-padding">
                                 <label for="user_phone">用户手机</label>
                             </div>
                             <div class="col-md-8">
-                                <input type="text" id="user_phone" class="form-control input-sm" placeholder="输入用户手机号码">
+                                <input type="text" id="user_phone" class="form-control input-sm" ng-model="user_phone" placeholder="输入用户手机号码">
                             </div>
-                        </div>
-                        <div class="col-md-2 no-padding">
-                            <button class="btn-search btn btn-white btn-xs ">查 询 </button>
                         </div>
                     </div>
                     <div class="col-lg-3 col-xs-4" style="text-align: right;">
                         <label for="agent">用户所属商户:&nbsp;</label>
-                        <select id="agent" class="agent-name form-control">
+                        <select id="agent" class="agent-name form-control" ng-model="search_agent">
                             <!--账号状态-->
                             <option value=""></option>
                             <option ng-repeat="agent in agents" value="{{agent.name}}" ng-bind="agent.val"></option>
@@ -160,11 +157,14 @@
                     </div>
                     <div class="col-lg-3 col-xs-4" style=" padding-right: 40px;text-align: right;">
                         <label for="status">状态:&nbsp;</label>
-                        <select id="status" class="user-status form-control">
+                        <select id="status" class="user-status form-control" ng-model="search_status">
                             <!--账号状态-->
                             <option value=""></option>
                             <option ng-repeat="status in user_status" value="{{status.name}}" ng-bind="status.val"></option>
                         </select>
+                    </div>
+                    <div class="col-lg-1">
+                        <button class="btn-search btn btn-success">查 询 </button>
                     </div>
                 </div>
                 <!--用户列表-->
