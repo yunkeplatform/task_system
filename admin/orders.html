@@ -152,7 +152,7 @@
                                 <label for="task_id">任务ID</label>
                             </div>
                             <div class="col-md-8">
-                                <input type="text" id="task_id" class="form-control input-sm" placeholder="任务id">
+                                <input type="text" id="task_id" class="form-control input-sm" ng-model="task_id" placeholder="任务id">
                             </div>
                         </div>
                         <div class="col-md-5 no-padding">
@@ -160,7 +160,7 @@
                                 <label for="task_title">任务名称</label>
                             </div>
                             <div class="col-md-8">
-                                <input type="text" id="task_title" class="form-control input-sm" placeholder="输入用户手机号码">
+                                <input type="text" id="task_title" class="form-control input-sm" ng-model="task_name" placeholder="输入用户手机号码">
                             </div>
                         </div>
                     </div>
@@ -169,22 +169,23 @@
                             <label for="user_phone">用户手机</label>
                         </div>
                         <div class="col-md-8">
-                            <input type="text" id="user_phone" class="form-control input-sm" placeholder="输入用户手机号码">
+                            <input type="text" id="user_phone" class="form-control input-sm" ng-model="user_phone" placeholder="输入用户手机号码">
                         </div>
                     </div>
                     <div class="col-lg-3 col-xs-4" style=" padding-right: 40px;text-align: right;">
                         <label for="status">订单状态:&nbsp;</label>
-                        <select id="status" class="user-status form-control">
+                        <select id="status" class="user-status form-control" ng-model="search_status">
                             <!--账号状态-->
-                            <option value=""></option>
-                            <option ng-repeat="status in user_status" value="{{status.name}}" ng-bind="status.val"></option>
+                            <option selected></option>
+                            <option value="1">1</option>
+                            <option  value=""></option>
                         </select>
                     </div>
                 </div>
                 <div class="form-inline" style="height: 54px;padding: 5px 15px 15px;background-color: #fff">
                     <div class="col-md-2 col-xs-4">
                         <label for="agent">订单商户:&nbsp;</label>
-                        <select id="agent" class="agent-name form-control">
+                        <select id="agent" class="agent-name form-control" ng-model="search_agent">
                             <!--账号状态-->
                             <option value=""></option>
                             <option ng-repeat="agent in agents" value="{{agent.name}}" ng-bind="agent.val"></option>
@@ -193,7 +194,7 @@
                     <div class="col-md-1" style="line-height: 30px">订单时间:</div>
                     <div class="col-md-2 no-padding">
                         <div class="input-group date">
-                            <input id="start-time" type="text" name="start-time" class="form-control datepicker">
+                            <input id="start-time" type="text" name="start-time" ng-model="start_time" class="form-control datepicker">
                             <div class="input-group-addon">
                                 <label for="start-time" class="glyphicon glyphicon-th"></label>
                             </div>
@@ -202,7 +203,7 @@
                     <div class="col-md-1 no-padding" style="max-width: 30px;text-align: center;line-height: 30px"> --- </div>
                     <div class="col-md-2 no-padding">
                         <div class="input-group date">
-                            <input type="text" name="end-time" id="end-time" class="form-control datepicker">
+                            <input type="text" name="end-time" id="end-time" ng-model="end_time" class="form-control datepicker">
                             <div class="input-group-addon">
                                 <label for="end-time" class="glyphicon glyphicon-th"></label>
                             </div>
@@ -264,6 +265,6 @@
         </div>
     </div>
 </div>
-<script src="../js/lib/requirejs/require.min.js" data-main="../js/admin/tasks" defer async="true" charset="utf-8"></script>
+<script src="../js/lib/requirejs/require.min.js" data-main="../js/admin/orders" defer async="true" charset="utf-8"></script>
 </body>
 </html>
