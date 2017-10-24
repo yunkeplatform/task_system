@@ -51,16 +51,13 @@ require(['config'], function (){
             // 获取当前页码的数据
             function getCurrentPageData(page) {
                 var _params = {
-                    "type":null,
-                    "status":null
+                    page:page,
+                    type:$scope.search_type,
+                    status:$scope.search_status,
+                    task_id: $scope.task_id,
+                    task_name:$scope.task_name
                 };
                 var _url = '../js/json/admin_tasks.json';
-                if($scope.type && $scope.type !=undefined){
-                    _params.type = $scope.type
-                }
-                if($scope.status && $scope.status !=undefined){
-                    _params.status = $scope.status
-                }
                 console.log(_url);
                 $http({
                     method: 'GET',
@@ -87,7 +84,7 @@ require(['config'], function (){
                 var options = "";
                 if(total && total>0){
                     for(var i=0;i<total;i++){
-                        var _page = i+1;
+                        var _page = parseInt(i)+1;
                         options += "<option value="+_page+" data-page="+_page+" >"+_page+"</option>";
                     }
                     $(select).html(options);
@@ -126,43 +123,9 @@ require(['config'], function (){
                     $scope.current_page = _page;
                     getCurrentPageData(_page);
                 });
-                // 监控所属商户select
-                $('#type').on('change',function () {
-                    var _type = $(this).val();
-                    $scope.type = _type;
-                    console.log(_type);
-                    getCurrentPageData(1);
-                });
-                // 监控用户状态select
-                $('#status').on('change',function () {
-                    var _status = $(this).val();
-                    $scope.status = _status;
-                    console.log(_status);
-                    getCurrentPageData(1);
-                });
                 // 点击查询
                 $('.btn-search').on('click',function () {
-                    var task_id = $.trim($('#task_id').val());
-                    var task_name = $.trim($('#task_name').val());
-                    var _url = '../js/json/admin_tasks.json?'+'task_id='+task_id+'&task_name='+task_name;
-                    console.log(_url);
-                    $http({
-                        method: 'GET',
-                        url:_url
-                    }).then(function successCallback(response) {
-                        // 请求成功执行代码
-                        $scope.tasks = response.data.tasks;
-                        $scope.total_page = 1; // 总页数
-                        $scope.current_page = 1;
-                        RenderPageSelect(response.data.total_page);
-                        console.log($scope.current_page);
-                        preNextRender($scope.current_page);
-                    }, function errorCallback(response) {
-                        // 请求失败执行代码
-                        require(['sm'],function () {
-                            $.alert('Sorry,加载失败了','请重试或者待会再试');
-                        });
-                    });
+                    getCurrentPageData(1)
                 });
                 // 点击编辑
                 $('.data-div').on('click','.btn-edit',function () {

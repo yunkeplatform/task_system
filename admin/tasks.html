@@ -150,7 +150,7 @@
                                 <label for="task_id">任务ID</label>
                             </div>
                             <div class="col-md-8">
-                                <input type="text" id="task_id" class="form-control input-sm" placeholder="输入任务的id">
+                                <input type="text" id="task_id" class="form-control input-sm" ng-model="task_id" placeholder="输入任务的id">
                             </div>
                         </div>
                         <div class="col-md-5 no-padding">
@@ -158,16 +158,13 @@
                                 <label for="task_name">任务名称</label>
                             </div>
                             <div class="col-md-8">
-                                <input type="text" id="task_name" class="form-control input-sm" placeholder="输入任务的名称">
+                                <input type="text" id="task_name" class="form-control input-sm" ng-model="task_name" placeholder="输入任务的名称">
                             </div>
-                        </div>
-                        <div class="col-md-2 no-padding">
-                            <button class="btn-search btn btn-white btn-xs ">查 询 </button>
                         </div>
                     </div>
                     <div class="col-lg-3 col-xs-4" style="text-align: right;">
                         <label for="type">任务类型:&nbsp;</label>
-                        <select id="type" class="type-name form-control">
+                        <select id="type" class="type-name form-control" ng-model="search_type">
                             <!--账号状态-->
                             <option value=""></option>
                             <option ng-repeat="type in types" value="{{type.name}}" ng-bind="type.val"></option>
@@ -175,7 +172,7 @@
                     </div>
                     <div class="col-lg-3 col-xs-4" style=" padding-right: 40px;text-align: right;">
                         <label for="status">上下架:&nbsp;</label>
-                        <select id="status" class="task-status form-control">
+                        <select id="status" class="task-status form-control" ng-model="search_status">
                             <!--账号状态-->
                             <option value=""></option>
                             <option ng-repeat="status in task_status" value="{{status.name}}" ng-bind="status.val"></option>
@@ -183,7 +180,10 @@
                     </div>
                 </div>
                 <div class="form-inline col-md-12 clearfix" style="height: 40px;padding: 5px 15px;margin-bottom: 10px">
-                    <div class="col-md-2" style="line-height: 30px">
+                    <div class="col-md-1" style="line-height: 30px">
+                        <button class="btn-search btn btn-success">查 询 </button>
+                    </div>
+                    <div class="col-md-1" style="line-height: 30px">
                         <a href="task_add.html" class="btn-export-orders btn btn-success ">新建任务</a>
                     </div>
                 </div>
