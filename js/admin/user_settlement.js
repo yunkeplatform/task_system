@@ -51,24 +51,15 @@ require(['config'], function (){
             // 获取当前页码的数据
             function getCurrentPageData(page) {
                 var _params = {
-                    "agent":null,
-                    "status":null,
-                    "start_time":null,
-                    "end_time":null
+                    "page":page,
+                    "user_id":$scope.user_id,
+                    "task_ph":$scope.user_phone,
+                    "agent":$scope.search_agent,
+                    "status":$scope.search_status,
+                    "start_time":$scope.start_time,
+                    "end_time":$scope.end_time
                 };
                 var _url = '../js/json/users.json';
-                if($scope.start_time && $scope.start_time !=undefined){
-                    _params.start_time = $scope.start_time
-                }
-                if($scope.end_time && $scope.end_time !=undefined){
-                    _params.end_time = $scope.end_time
-                }
-                if($scope.agent && $scope.agent !=undefined){
-                    _params.agent = $scope.agent
-                }
-                if($scope.status && $scope.status !=undefined){
-                    _params.status = $scope.status
-                }
                 console.log(_url);
                 $http({
                     method: 'GET',
@@ -141,83 +132,9 @@ require(['config'], function (){
                     $scope.current_page = _page;
                     getCurrentPageData(_page);
                 });
-                // 监控所属商户select
-                $('#agent').on('change',function () {
-                    var _agent = $(this).val();
-                    $scope.agent = _agent;
-                    console.log(_agent);
-                    getCurrentPageData(1);
-                });
-                // 监控用户状态select
-                $('#status').on('change',function () {
-                    var _status = $(this).val();
-                    $scope.status = _status;
-                    console.log(_status);
-                    getCurrentPageData(1);
-                });
-                // 监控订单时间的变化
-                $('#start-time').on('change',function () {
-                    $scope.start_time = $(this).val();
-                    getCurrentPageData(1);
-                    console.log('start_time:'+$scope.start_time);
-                });
-                $('#end-time').on('change',function () {
-                    $scope.end_time = $(this).val();
-                    getCurrentPageData(1);
-                    console.log('end_time'+$scope.end_time);
-                });
                 // 点击查询
                 $('.btn-search').on('click',function () {
-                    var user_id = $.trim($('#user_id').val());
-                    var user_phone = $.trim($('#user_phone').val());
-                    var _url = '../js/json/users.json?'+'user_id='+user_id+'&user_phone='+user_phone;
-                    console.log(_url);
-                    $http({
-                        method: 'GET',
-                        url:_url
-                    }).then(function successCallback(response) {
-                        // 请求成功执行代码
-                        $scope.users = response.data.users;
-                        $scope.total_page = 1; // 总页数
-                        $scope.current_page = 1;
-                        RenderPageSelect(response.data.total_page);
-                        console.log($scope.current_page);
-                        preNextRender($scope.current_page);
-                    }, function errorCallback(response) {
-                        // 请求失败执行代码
-                        require(['sm'],function () {
-                            $.alert('Sorry,加载失败了','请重试或者待会再试');
-                        });
-                    });
-                });
-                // 改变某个用户的状态
-                $('.tablebody').on('click','.btn-user-status',function () {
-                    var user_id = $(this).attr('data-id');
-                    var user_status = $(this).attr('data-status');
-                    if(user_status == 'active'){
-                        user_status = 'missing'
-                    }else{
-                        user_status = 'active'
-                    }
-                    var _url = '../js/json/users.json?'+'user_id='+user_id+'&user_status='+user_status;
-                    console.log(_url);
-                    $http({
-                        method: 'GET',
-                        url:_url
-                    }).then(function successCallback(response) {
-                        // 请求成功执行代码
-                        $scope.users = response.data.users;
-                        // $scope.total_page = 1; // 总页数
-                        // $scope.current_page = 1;
-                        RenderPageSelect(response.data.total_page);
-                        console.log($scope.current_page);
-                        preNextRender($scope.current_page);
-                    }, function errorCallback(response) {
-                        // 请求失败执行代码
-                        require(['sm'],function () {
-                            $.alert('Sorry,加载失败了','请重试或者待会再试');
-                        });
-                    });
+                    getCurrentPageData(1);
                 });
             });
         }])

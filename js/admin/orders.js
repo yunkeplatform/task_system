@@ -51,6 +51,7 @@ require(['config'], function (){
             // 获取当前页码的数据
             function getCurrentPageData(page) {
                 var _params = {
+                    page:page,
                     task_id: $scope.task_id,
                     task_name:$scope.task_name,
                     user_phone:$scope.user_phone,
